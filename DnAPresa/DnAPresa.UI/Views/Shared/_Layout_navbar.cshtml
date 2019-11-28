@@ -1,0 +1,25 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/">
+                <img style="height: 50px;" src="~/Content/logo.png"/>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Driver", "Driver", "Home")</li>
+                <li>@Html.ActionLink("Express(Office)", "ExpressOffice", "Home")</li>
+                <li>@Html.ActionLink("Express(Warehouse)", "ExpressWarehouse", "Home")</li>
+                <li>@Html.ActionLink("Logistics", "Logistics", "Home")</li>
+                <li>@Html.ActionLink("Duke", "Duke", "Home")</li>
+                <li>@Html.ActionLink("Canton", "Canton", "Home")</li>
+
+            </ul>
+        </div>
+    </div>
+</div>

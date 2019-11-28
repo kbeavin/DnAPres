@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TMW_LiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="labelfile">
+          <Key>
+            <PropertyRef Name="labeldefinition" />
+            <PropertyRef Name="abbr" />
+          </Key>
+          <Property Name="labeldefinition" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="abbr" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="code" Type="int" />
+          <Property Name="locked" Type="char" MaxLength="1" />
+          <Property Name="userlabelname" Type="varchar" MaxLength="20" />
+          <Property Name="edicode" Type="varchar" MaxLength="6" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="systemcode" Type="char" MaxLength="1" />
+          <Property Name="retired" Type="char" MaxLength="1" />
+          <Property Name="inventory_item" Type="varchar" MaxLength="1" />
+          <Property Name="acct_db" Type="varchar" MaxLength="10" />
+          <Property Name="ic_clear_glnum" Type="varchar" MaxLength="66" />
+          <Property Name="acct_server" Type="varchar" MaxLength="20" />
+          <Property Name="pyt_itemcode" Type="varchar" MaxLength="6" />
+          <Property Name="teamleader_email" Type="varchar" MaxLength="50" />
+          <Property Name="auto_complete" Type="char" MaxLength="1" />
+          <Property Name="label_ExtraString1" Type="varchar" MaxLength="60" />
+          <Property Name="exclude_from_creditcheck" Type="char" MaxLength="1" />
+          <Property Name="label_extrastring2" Type="varchar" MaxLength="60" />
+          <Property Name="create_move" Type="char" MaxLength="1" />
+          <Property Name="param1" Type="varchar" MaxLength="60" />
+          <Property Name="param2" Type="varchar" MaxLength="60" />
+          <Property Name="param1_label" Type="varchar" MaxLength="60" />
+          <Property Name="param2_label" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring1_label" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring2_label" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring3" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring4" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring5" Type="varchar" MaxLength="60" />
+          <Property Name="label_extrastring6" Type="varchar" MaxLength="60" />
+          <Property Name="global_label" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="manpowerprofile">
+          <Key>
+            <PropertyRef Name="mpp_id" />
+          </Key>
+          <Property Name="mpp_id" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="mpp_type" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_tractornumber" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_otherid" Type="varchar" MaxLength="25" />
+          <Property Name="mpp_employedby" Type="varchar" MaxLength="12" />
+          <Property Name="mpp_firstname" Type="varchar" MaxLength="40" />
+          <Property Name="mpp_middlename" Type="char" MaxLength="1" />
+          <Property Name="mpp_lastname" Type="varchar" MaxLength="40" />
+          <Property Name="mpp_ssn" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_address1" Type="varchar" MaxLength="30" />
+          <Property Name="mpp_address2" Type="varchar" MaxLength="30" />
+          <Property Name="mpp_city" Type="int" />
+          <Property Name="mpp_state" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_zip" Type="varchar" MaxLength="10" />
+          <Property Name="mpp_hiredate" Type="datetime" />
+          <Property Name="mpp_senioritydate" Type="datetime" />
+          <Property Name="mpp_licensestate" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_licenseclass" Type="varchar" MaxLength="15" />
+          <Property Name="mpp_licensenumber" Type="varchar" MaxLength="25" />
+          <Property Name="mpp_dateofbirth" Type="datetime" />
+          <Property Name="mpp_currentphone" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_alternatephone" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_homephone" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_type1" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_type2" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_type3" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_type4" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_currency" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_payto" Type="varchar" MaxLength="12" />
+          <Property Name="mpp_singlemilerate" Type="int" />
+          <Property Name="mpp_teammilerate" Type="int" />
+          <Property Name="mpp_hourlyrate" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="mpp_revenuerate" Type="int" />
+          <Property Name="mpp_teamleader" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_fleet" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_division" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_domicile" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_company" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_terminal" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_status" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_emerphone" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_emername" Type="varchar" MaxLength="40" />
+          <Property Name="mpp_voicemailbox" Type="varchar" MaxLength="20" />
+          <Property Name="mpp_terminationdt" Type="datetime" />
+          <Property Name="mpp_avl_date" Type="datetime" />
+          <Property Name="mpp_avl_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_avl_city" Type="int" />
+          <Property Name="mpp_avl_status" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_pln_date" Type="datetime" />
+          <Property Name="mpp_pln_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_pln_city" Type="int" />
+          <Property Name="mpp_pln_lgh" Type="int" />
+          <Property Name="mpp_avl_lgh" Type="int" />
+          <Property Name="mpp_lastfirst" Type="varchar" MaxLength="45" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="mpp_actg_type" Type="char" MaxLength="1" />
+          <Property Name="mpp_last_home" Type="datetime" />
+          <Property Name="mpp_want_home" Type="datetime" />
+          <Property Name="mpp_misc1" Type="varchar" MaxLength="254" />
+          <Property Name="mpp_misc2" Type="varchar" MaxLength="254" />
+          <Property Name="mpp_misc3" Type="varchar" MaxLength="254" />
+          <Property Name="mpp_misc4" Type="varchar" MaxLength="254" />
+          <Property Name="mpp_usecashcard" Type="char" MaxLength="1" />
+          <Property Name="mpp_updatedby" Type="varchar" MaxLength="256" />
+          <Property Name="mpp_bmp_pathname" Type="varchar" MaxLength="64" />
+          <Property Name="mpp_updateon" Type="datetime" />
+          <Property Name="mpp_createdate" Type="datetime" />
+          <Property Name="mpp_quickentry" Type="char" MaxLength="1" />
+          <Property Name="mpp_servicerule" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_gps_desc" Type="varchar" MaxLength="45" />
+          <Property Name="mpp_gps_date" Type="datetime" />
+          <Property Name="mpp_gps_latitude" Type="int" />
+          <Property Name="mpp_gps_longitude" Type="int" />
+          <Property Name="mpp_travel_minutes" Type="smallint" />
+          <Property Name="mpp_mile_day7" Type="smallint" />
+          <Property Name="mpp_home_latitude" Type="int" />
+          <Property Name="mpp_home_longitude" Type="int" />
+          <Property Name="mpp_last_log_date" Type="datetime" />
+          <Property Name="mpp_hours1" Type="float" />
+          <Property Name="mpp_hours2" Type="float" />
+          <Property Name="mpp_hours3" Type="float" />
+          <Property Name="mpp_home_city" Type="varchar" MaxLength="45" />
+          <Property Name="mpp_exp1_date" Type="datetime" />
+          <Property Name="mpp_exp2_date" Type="datetime" />
+          <Property Name="mpp_next_event" Type="char" MaxLength="6" />
+          <Property Name="mpp_next_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_next_city" Type="int" />
+          <Property Name="mpp_next_state" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_next_region1" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_next_region2" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_next_region3" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_next_region4" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_prior_event" Type="char" MaxLength="6" />
+          <Property Name="mpp_prior_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_prior_city" Type="int" />
+          <Property Name="mpp_prior_state" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_prior_region1" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_prior_region2" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_prior_region3" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_prior_region4" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_dailyhrsest" Type="float" />
+          <Property Name="mpp_weeklyhrsest" Type="float" />
+          <Property Name="mpp_lastlog_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_lastlog_estdate" Type="datetime" />
+          <Property Name="mpp_lastlog_cmp_name" Type="varchar" MaxLength="30" />
+          <Property Name="mpp_estlog_datetime" Type="datetime" />
+          <Property Name="mpp_password" Type="varchar" MaxLength="30" />
+          <Property Name="mpp_qualificationlist" Type="varchar" MaxLength="254" />
+          <Property Name="mpp_country" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_gp_class" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="mpp_gps_odometer" Type="int" />
+          <Property Name="mpp_ArvDep_Allowance_mins" Type="smallint" />
+          <Property Name="mpp_nbrdependents" Type="tinyint" />
+          <Property Name="mpp_avghourlypay" Type="money" />
+          <Property Name="mpp_avgperiodpay" Type="money" />
+          <Property Name="mpp_dailyguarenteedhours" Type="money" />
+          <Property Name="mpp_periodguarenteedhours" Type="money" />
+          <Property Name="mpp_comparisonflag" Type="char" MaxLength="1" />
+          <Property Name="mpp_exp1_enddate" Type="datetime" />
+          <Property Name="mpp_exp2_enddate" Type="datetime" />
+          <Property Name="mpp_hours1_week" Type="float" />
+          <Property Name="mpp_bid_next_starttime" Type="datetime" />
+          <Property Name="mpp_bid_next_hours" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="mpp_bid_next_type" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_bid_next_routestore" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_90daystart" Type="datetime" />
+          <Property Name="mpp_branch" Type="varchar" MaxLength="12" />
+          <Property Name="mpp_athome_terminal" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_perdiem_flag" Type="char" MaxLength="1" />
+          <Property Name="mpp_perdiem_eff_date" Type="datetime" />
+          <Property Name="rec_id" Type="int" />
+          <Property Name="mpp_cmpissuedpoints" Type="tinyint" />
+          <Property Name="mpp_drivedate" Type="datetime" />
+          <Property Name="mpp_yearsofsafedrive" Type="tinyint" />
+          <Property Name="mpp_ysdasofdate" Type="datetime" />
+          <Property Name="mpp_mt_type_loaded" Type="char" MaxLength="4" />
+          <Property Name="mpp_mt_type_empty" Type="char" MaxLength="4" />
+          <Property Name="mpp_gender" Type="char" MaxLength="1" />
+          <Property Name="mpp_aceid" Type="varchar" MaxLength="15" />
+          <Property Name="mpp_aceidtype" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_proximitycardid" Type="varchar" MaxLength="18" />
+          <Property Name="mpp_citizenship_status" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_citizenship_country" Type="varchar" MaxLength="50" />
+          <Property Name="mpp_pta_date" Type="datetime" />
+          <Property Name="mpp_email" Type="varchar" MaxLength="50" />
+          <Property Name="mpp_eff_date" Type="datetime" />
+          <Property Name="mpp_tuitioncost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_week_crd_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_period" Type="int" />
+          <Property Name="mpp_contribution_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_cont_period" Type="int" />
+          <Property Name="mpp_cont_week_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_crd_nbr" Type="int" />
+          <Property Name="mpp_cont_ded_nbr" Type="int" />
+          <Property Name="mpp_eligible_start_date" Type="datetime" />
+          <Property Name="mpp_tuition_acct_status" Type="char" MaxLength="1" />
+          <Property Name="mpp_train_anv_bonus_pd" Type="datetime" />
+          <Property Name="mpp_forgive_remain_balance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_cont_remain_balance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_train_anv_bonus_elig_date" Type="datetime" />
+          <Property Name="mpp_train_anv_bonus_amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_updt_forgive_crd_nbr" Type="int" />
+          <Property Name="mpp_updt_cont_ded_nbr" Type="int" />
+          <Property Name="mpp_updt_forgive_remain_balance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_updt_cont_remain_balance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_comment1" Type="varchar" MaxLength="255" />
+          <Property Name="sth_id" Type="int" />
+          <Property Name="sth_startdate" Type="datetime" />
+          <Property Name="mpp_milestonext" Type="int" />
+          <Property Name="mpp_next_stopnumber" Type="int" />
+          <Property Name="mpp_next_legnumber" Type="int" />
+          <Property Name="mpp_next_stoparrival" Type="datetime" />
+          <Property Name="mpp_last_calcdate" Type="datetime" />
+          <Property Name="mpp_default_shiftstart" Type="datetime" />
+          <Property Name="mpp_default_shiftend" Type="datetime" />
+          <Property Name="mpp_lastmobilecomm" Type="datetime" />
+          <Property Name="mpp_shiftnumber" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_cyclic_dsp_enabled" Type="char" MaxLength="1" />
+          <Property Name="mpp_preassign_ack_required" Type="char" MaxLength="1" />
+          <Property Name="mpp_shift_start" Type="datetime" />
+          <Property Name="mpp_shift_end" Type="datetime" />
+          <Property Name="mpp_prior_cmp_othertype1" Type="char" MaxLength="6" />
+          <Property Name="mpp_next_cmp_othertype1" Type="char" MaxLength="6" />
+          <Property Name="mpp_hrs_dbl_time" Type="money" />
+          <Property Name="mpp_override_default_ot" Type="char" MaxLength="1" />
+          <Property Name="mpp_default_shiftpriority" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_driverlogtype" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_driverlogGroups" Type="varchar" MaxLength="255" />
+          <Property Name="mpp_driverlogTerminal" Type="varchar" MaxLength="255" />
+          <Property Name="mpp_hos_poll_required" Type="char" MaxLength="1" />
+          <Property Name="mpp_fourteenhrest" Type="float" />
+          <Property Name="rowsec_rsrv_id" Type="int" />
+          <Property Name="mpp_csa_score" Type="int" />
+          <Property Name="mpp_advance_rate_solo" Type="money" />
+          <Property Name="mpp_advance_rate_team" Type="money" />
+          <Property Name="mpp_employeetype" Type="char" MaxLength="1" />
+          <Property Name="mpp_timeoffbetweenduty" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="mpp_shift_isbackup" Type="char" MaxLength="1" />
+          <Property Name="mpp_shift_backup_mpp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_rtw_date" Type="datetime" />
+          <Property Name="mpp_mcommID" Type="varchar" MaxLength="30" />
+          <Property Name="mpp_mcommType" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_hosstatus" Type="int" />
+          <Property Name="mpp_hosstatusdate" Type="datetime" />
+          <Property Name="mpp_hosactivityupdateon" Type="datetime" />
+          <Property Name="mpp_last_DailyLogsDate" Type="datetime" />
+          <Property Name="mpp_last_DailyLogsConfirmedDate" Type="datetime" />
+          <Property Name="mpp_subsistence_eligible" Type="char" MaxLength="1" />
+          <Property Name="mpp_grandfather_date" Type="datetime" />
+          <Property Name="guaranteed_pay_promised" Type="money" />
+          <Property Name="mpp_subsistence_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_subsistence_pay_radius" Type="float" />
+          <Property Name="mpp_subsistence_use_at_home" Type="char" MaxLength="1" />
+          <Property Name="mpp_subsistence_home_cmp_id" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_trainee" Type="char" MaxLength="1" />
+          <Property Name="mpp_trainer" Type="char" MaxLength="1" />
+          <Property Name="PayScheduleId" Type="int" />
+          <Property Name="mpp_gps_heading" Type="float" />
+          <Property Name="mpp_gps_speed" Type="int" />
+          <Property Name="CompensationType" Type="varchar" MaxLength="6" />
+          <Property Name="OriginDestinationOption" Type="varchar" MaxLength="6" />
+          <Property Name="mpp_carrier" Type="varchar" MaxLength="8" />
+          <Property Name="mpp_note" Type="varchar" MaxLength="120" />
+          <Property Name="mpp_note_updatedate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="TMW_LiveModelStoreContainer">
+          <EntitySet Name="labelfile" EntityType="Self.labelfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manpowerprofile" EntityType="Self.manpowerprofile" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TMW_LiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="labelfile">
+          <Key>
+            <PropertyRef Name="labeldefinition" />
+            <PropertyRef Name="abbr" />
+          </Key>
+          <Property Name="labeldefinition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="abbr" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="Int32" />
+          <Property Name="locked" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="userlabelname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="edicode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="systemcode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="retired" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="inventory_item" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="acct_db" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ic_clear_glnum" Type="String" MaxLength="66" FixedLength="false" Unicode="false" />
+          <Property Name="acct_server" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pyt_itemcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="teamleader_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="auto_complete" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="label_ExtraString1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="exclude_from_creditcheck" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="label_extrastring2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="create_move" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="param1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="param2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="param1_label" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="param2_label" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring1_label" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring2_label" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring4" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring5" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="label_extrastring6" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="global_label" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="manpowerprofile">
+          <Key>
+            <PropertyRef Name="mpp_id" />
+          </Key>
+          <Property Name="mpp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mpp_type" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_tractornumber" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_otherid" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_employedby" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_firstname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_middlename" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_lastname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_ssn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_address1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_address2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_city" Type="Int32" />
+          <Property Name="mpp_state" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_hiredate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_senioritydate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_licensestate" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_licenseclass" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_licensenumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_dateofbirth" Type="DateTime" Precision="3" />
+          <Property Name="mpp_currentphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_alternatephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_homephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_type1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_type2" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_type3" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_type4" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_currency" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_payto" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_singlemilerate" Type="Int32" />
+          <Property Name="mpp_teammilerate" Type="Int32" />
+          <Property Name="mpp_hourlyrate" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="mpp_revenuerate" Type="Int32" />
+          <Property Name="mpp_teamleader" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_fleet" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_division" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_domicile" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_company" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_terminal" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_status" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_emerphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_emername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_voicemailbox" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_terminationdt" Type="DateTime" Precision="3" />
+          <Property Name="mpp_avl_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_avl_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_avl_city" Type="Int32" />
+          <Property Name="mpp_avl_status" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_pln_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_pln_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_pln_city" Type="Int32" />
+          <Property Name="mpp_pln_lgh" Type="Int32" />
+          <Property Name="mpp_avl_lgh" Type="Int32" />
+          <Property Name="mpp_lastfirst" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="mpp_actg_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_last_home" Type="DateTime" Precision="3" />
+          <Property Name="mpp_want_home" Type="DateTime" Precision="3" />
+          <Property Name="mpp_misc1" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_misc2" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_misc3" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_misc4" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_usecashcard" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_updatedby" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_bmp_pathname" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_updateon" Type="DateTime" Precision="3" />
+          <Property Name="mpp_createdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_quickentry" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_servicerule" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_gps_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_gps_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_gps_latitude" Type="Int32" />
+          <Property Name="mpp_gps_longitude" Type="Int32" />
+          <Property Name="mpp_travel_minutes" Type="Int16" />
+          <Property Name="mpp_mile_day7" Type="Int16" />
+          <Property Name="mpp_home_latitude" Type="Int32" />
+          <Property Name="mpp_home_longitude" Type="Int32" />
+          <Property Name="mpp_last_log_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_hours1" Type="Double" />
+          <Property Name="mpp_hours2" Type="Double" />
+          <Property Name="mpp_hours3" Type="Double" />
+          <Property Name="mpp_home_city" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_exp1_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_exp2_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_next_event" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_next_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_next_city" Type="Int32" />
+          <Property Name="mpp_next_state" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_next_region1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_next_region2" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_next_region3" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_next_region4" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_event" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_prior_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_city" Type="Int32" />
+          <Property Name="mpp_prior_state" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_region1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_region2" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_region3" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_prior_region4" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_dailyhrsest" Type="Double" />
+          <Property Name="mpp_weeklyhrsest" Type="Double" />
+          <Property Name="mpp_lastlog_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_lastlog_estdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_lastlog_cmp_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_estlog_datetime" Type="DateTime" Precision="3" />
+          <Property Name="mpp_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_qualificationlist" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_country" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_gp_class" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mpp_gps_odometer" Type="Int32" />
+          <Property Name="mpp_ArvDep_Allowance_mins" Type="Int16" />
+          <Property Name="mpp_nbrdependents" Type="Byte" />
+          <Property Name="mpp_avghourlypay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_avgperiodpay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_dailyguarenteedhours" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_periodguarenteedhours" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_comparisonflag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_exp1_enddate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_exp2_enddate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_hours1_week" Type="Double" />
+          <Property Name="mpp_bid_next_starttime" Type="DateTime" Precision="3" />
+          <Property Name="mpp_bid_next_hours" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="mpp_bid_next_type" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_bid_next_routestore" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_90daystart" Type="DateTime" Precision="3" />
+          <Property Name="mpp_branch" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_athome_terminal" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_perdiem_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_perdiem_eff_date" Type="DateTime" Precision="3" />
+          <Property Name="rec_id" Type="Int32" />
+          <Property Name="mpp_cmpissuedpoints" Type="Byte" />
+          <Property Name="mpp_drivedate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_yearsofsafedrive" Type="Byte" />
+          <Property Name="mpp_ysdasofdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_mt_type_loaded" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_mt_type_empty" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_aceid" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_aceidtype" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_proximitycardid" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_citizenship_status" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_citizenship_country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_pta_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_eff_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_tuitioncost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_week_crd_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_period" Type="Int32" />
+          <Property Name="mpp_contribution_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_cont_period" Type="Int32" />
+          <Property Name="mpp_cont_week_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_forgive_crd_nbr" Type="Int32" />
+          <Property Name="mpp_cont_ded_nbr" Type="Int32" />
+          <Property Name="mpp_eligible_start_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_tuition_acct_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_train_anv_bonus_pd" Type="DateTime" Precision="3" />
+          <Property Name="mpp_forgive_remain_balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_cont_remain_balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_train_anv_bonus_elig_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_train_anv_bonus_amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_updt_forgive_crd_nbr" Type="Int32" />
+          <Property Name="mpp_updt_cont_ded_nbr" Type="Int32" />
+          <Property Name="mpp_updt_forgive_remain_balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_updt_cont_remain_balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mpp_comment1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sth_id" Type="Int32" />
+          <Property Name="sth_startdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_milestonext" Type="Int32" />
+          <Property Name="mpp_next_stopnumber" Type="Int32" />
+          <Property Name="mpp_next_legnumber" Type="Int32" />
+          <Property Name="mpp_next_stoparrival" Type="DateTime" Precision="3" />
+          <Property Name="mpp_last_calcdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_default_shiftstart" Type="DateTime" Precision="3" />
+          <Property Name="mpp_default_shiftend" Type="DateTime" Precision="3" />
+          <Property Name="mpp_lastmobilecomm" Type="DateTime" Precision="3" />
+          <Property Name="mpp_shiftnumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_cyclic_dsp_enabled" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_preassign_ack_required" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_shift_start" Type="DateTime" Precision="3" />
+          <Property Name="mpp_shift_end" Type="DateTime" Precision="3" />
+          <Property Name="mpp_prior_cmp_othertype1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_next_cmp_othertype1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_hrs_dbl_time" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_override_default_ot" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_default_shiftpriority" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_driverlogtype" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_driverlogGroups" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_driverlogTerminal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_hos_poll_required" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_fourteenhrest" Type="Double" />
+          <Property Name="rowsec_rsrv_id" Type="Int32" />
+          <Property Name="mpp_csa_score" Type="Int32" />
+          <Property Name="mpp_advance_rate_solo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_advance_rate_team" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_employeetype" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_timeoffbetweenduty" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="mpp_shift_isbackup" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_shift_backup_mpp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_rtw_date" Type="DateTime" Precision="3" />
+          <Property Name="mpp_mcommID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_mcommType" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_hosstatus" Type="Int32" />
+          <Property Name="mpp_hosstatusdate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_hosactivityupdateon" Type="DateTime" Precision="3" />
+          <Property Name="mpp_last_DailyLogsDate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_last_DailyLogsConfirmedDate" Type="DateTime" Precision="3" />
+          <Property Name="mpp_subsistence_eligible" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_grandfather_date" Type="DateTime" Precision="3" />
+          <Property Name="guaranteed_pay_promised" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mpp_subsistence_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_subsistence_pay_radius" Type="Double" />
+          <Property Name="mpp_subsistence_use_at_home" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_subsistence_home_cmp_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_trainee" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mpp_trainer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PayScheduleId" Type="Int32" />
+          <Property Name="mpp_gps_heading" Type="Double" />
+          <Property Name="mpp_gps_speed" Type="Int32" />
+          <Property Name="CompensationType" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="OriginDestinationOption" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_carrier" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_note" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="mpp_note_updatedate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="TMW_LiveEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="labelfiles" EntityType="Self.labelfile" />
+          <EntitySet Name="manpowerprofiles" EntityType="Self.manpowerprofile" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TMW_LiveModelStoreContainer" CdmEntityContainer="TMW_LiveEntities1">
+          <EntitySetMapping Name="labelfiles">
+            <EntityTypeMapping TypeName="TMW_LiveModel.labelfile">
+              <MappingFragment StoreEntitySet="labelfile">
+                <ScalarProperty Name="labeldefinition" ColumnName="labeldefinition" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="abbr" ColumnName="abbr" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="userlabelname" ColumnName="userlabelname" />
+                <ScalarProperty Name="edicode" ColumnName="edicode" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="systemcode" ColumnName="systemcode" />
+                <ScalarProperty Name="retired" ColumnName="retired" />
+                <ScalarProperty Name="inventory_item" ColumnName="inventory_item" />
+                <ScalarProperty Name="acct_db" ColumnName="acct_db" />
+                <ScalarProperty Name="ic_clear_glnum" ColumnName="ic_clear_glnum" />
+                <ScalarProperty Name="acct_server" ColumnName="acct_server" />
+                <ScalarProperty Name="pyt_itemcode" ColumnName="pyt_itemcode" />
+                <ScalarProperty Name="teamleader_email" ColumnName="teamleader_email" />
+                <ScalarProperty Name="auto_complete" ColumnName="auto_complete" />
+                <ScalarProperty Name="label_ExtraString1" ColumnName="label_ExtraString1" />
+                <ScalarProperty Name="exclude_from_creditcheck" ColumnName="exclude_from_creditcheck" />
+                <ScalarProperty Name="label_extrastring2" ColumnName="label_extrastring2" />
+                <ScalarProperty Name="create_move" ColumnName="create_move" />
+                <ScalarProperty Name="param1" ColumnName="param1" />
+                <ScalarProperty Name="param2" ColumnName="param2" />
+                <ScalarProperty Name="param1_label" ColumnName="param1_label" />
+                <ScalarProperty Name="param2_label" ColumnName="param2_label" />
+                <ScalarProperty Name="label_extrastring1_label" ColumnName="label_extrastring1_label" />
+                <ScalarProperty Name="label_extrastring2_label" ColumnName="label_extrastring2_label" />
+                <ScalarProperty Name="label_extrastring3" ColumnName="label_extrastring3" />
+                <ScalarProperty Name="label_extrastring4" ColumnName="label_extrastring4" />
+                <ScalarProperty Name="label_extrastring5" ColumnName="label_extrastring5" />
+                <ScalarProperty Name="label_extrastring6" ColumnName="label_extrastring6" />
+                <ScalarProperty Name="global_label" ColumnName="global_label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manpowerprofiles">
+            <EntityTypeMapping TypeName="TMW_LiveModel.manpowerprofile">
+              <MappingFragment StoreEntitySet="manpowerprofile">
+                <ScalarProperty Name="mpp_id" ColumnName="mpp_id" />
+                <ScalarProperty Name="mpp_type" ColumnName="mpp_type" />
+                <ScalarProperty Name="mpp_tractornumber" ColumnName="mpp_tractornumber" />
+                <ScalarProperty Name="mpp_otherid" ColumnName="mpp_otherid" />
+                <ScalarProperty Name="mpp_employedby" ColumnName="mpp_employedby" />
+                <ScalarProperty Name="mpp_firstname" ColumnName="mpp_firstname" />
+                <ScalarProperty Name="mpp_middlename" ColumnName="mpp_middlename" />
+                <ScalarProperty Name="mpp_lastname" ColumnName="mpp_lastname" />
+                <ScalarProperty Name="mpp_ssn" ColumnName="mpp_ssn" />
+                <ScalarProperty Name="mpp_address1" ColumnName="mpp_address1" />
+                <ScalarProperty Name="mpp_address2" ColumnName="mpp_address2" />
+                <ScalarProperty Name="mpp_city" ColumnName="mpp_city" />
+                <ScalarProperty Name="mpp_state" ColumnName="mpp_state" />
+                <ScalarProperty Name="mpp_zip" ColumnName="mpp_zip" />
+                <ScalarProperty Name="mpp_hiredate" ColumnName="mpp_hiredate" />
+                <ScalarProperty Name="mpp_senioritydate" ColumnName="mpp_senioritydate" />
+                <ScalarProperty Name="mpp_licensestate" ColumnName="mpp_licensestate" />
+                <ScalarProperty Name="mpp_licenseclass" ColumnName="mpp_licenseclass" />
+                <ScalarProperty Name="mpp_licensenumber" ColumnName="mpp_licensenumber" />
+                <ScalarProperty Name="mpp_dateofbirth" ColumnName="mpp_dateofbirth" />
+                <ScalarProperty Name="mpp_currentphone" ColumnName="mpp_currentphone" />
+                <ScalarProperty Name="mpp_alternatephone" ColumnName="mpp_alternatephone" />
+                <ScalarProperty Name="mpp_homephone" ColumnName="mpp_homephone" />
+                <ScalarProperty Name="mpp_type1" ColumnName="mpp_type1" />
+                <ScalarProperty Name="mpp_type2" ColumnName="mpp_type2" />
+                <ScalarProperty Name="mpp_type3" ColumnName="mpp_type3" />
+                <ScalarProperty Name="mpp_type4" ColumnName="mpp_type4" />
+                <ScalarProperty Name="mpp_currency" ColumnName="mpp_currency" />
+                <ScalarProperty Name="mpp_payto" ColumnName="mpp_payto" />
+                <ScalarProperty Name="mpp_singlemilerate" ColumnName="mpp_singlemilerate" />
+                <ScalarProperty Name="mpp_teammilerate" ColumnName="mpp_teammilerate" />
+                <ScalarProperty Name="mpp_hourlyrate" ColumnName="mpp_hourlyrate" />
+                <ScalarProperty Name="mpp_revenuerate" ColumnName="mpp_revenuerate" />
+                <ScalarProperty Name="mpp_teamleader" ColumnName="mpp_teamleader" />
+                <ScalarProperty Name="mpp_fleet" ColumnName="mpp_fleet" />
+                <ScalarProperty Name="mpp_division" ColumnName="mpp_division" />
+                <ScalarProperty Name="mpp_domicile" ColumnName="mpp_domicile" />
+                <ScalarProperty Name="mpp_company" ColumnName="mpp_company" />
+                <ScalarProperty Name="mpp_terminal" ColumnName="mpp_terminal" />
+                <ScalarProperty Name="mpp_status" ColumnName="mpp_status" />
+                <ScalarProperty Name="mpp_emerphone" ColumnName="mpp_emerphone" />
+                <ScalarProperty Name="mpp_emername" ColumnName="mpp_emername" />
+                <ScalarProperty Name="mpp_voicemailbox" ColumnName="mpp_voicemailbox" />
+                <ScalarProperty Name="mpp_terminationdt" ColumnName="mpp_terminationdt" />
+                <ScalarProperty Name="mpp_avl_date" ColumnName="mpp_avl_date" />
+                <ScalarProperty Name="mpp_avl_cmp_id" ColumnName="mpp_avl_cmp_id" />
+                <ScalarProperty Name="mpp_avl_city" ColumnName="mpp_avl_city" />
+                <ScalarProperty Name="mpp_avl_status" ColumnName="mpp_avl_status" />
+                <ScalarProperty Name="mpp_pln_date" ColumnName="mpp_pln_date" />
+                <ScalarProperty Name="mpp_pln_cmp_id" ColumnName="mpp_pln_cmp_id" />
+                <ScalarProperty Name="mpp_pln_city" ColumnName="mpp_pln_city" />
+                <ScalarProperty Name="mpp_pln_lgh" ColumnName="mpp_pln_lgh" />
+                <ScalarProperty Name="mpp_avl_lgh" ColumnName="mpp_avl_lgh" />
+                <ScalarProperty Name="mpp_lastfirst" ColumnName="mpp_lastfirst" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="mpp_actg_type" ColumnName="mpp_actg_type" />
+                <ScalarProperty Name="mpp_last_home" ColumnName="mpp_last_home" />
+                <ScalarProperty Name="mpp_want_home" ColumnName="mpp_want_home" />
+                <ScalarProperty Name="mpp_misc1" ColumnName="mpp_misc1" />
+                <ScalarProperty Name="mpp_misc2" ColumnName="mpp_misc2" />
+                <ScalarProperty Name="mpp_misc3" ColumnName="mpp_misc3" />
+                <ScalarProperty Name="mpp_misc4" ColumnName="mpp_misc4" />
+                <ScalarProperty Name="mpp_usecashcard" ColumnName="mpp_usecashcard" />
+                <ScalarProperty Name="mpp_updatedby" ColumnName="mpp_updatedby" />
+                <ScalarProperty Name="mpp_bmp_pathname" ColumnName="mpp_bmp_pathname" />
+                <ScalarProperty Name="mpp_updateon" ColumnName="mpp_updateon" />
+                <ScalarProperty Name="mpp_createdate" ColumnName="mpp_createdate" />
+                <ScalarProperty Name="mpp_quickentry" ColumnName="mpp_quickentry" />
+                <ScalarProperty Name="mpp_servicerule" ColumnName="mpp_servicerule" />
+                <ScalarProperty Name="mpp_gps_desc" ColumnName="mpp_gps_desc" />
+                <ScalarProperty Name="mpp_gps_date" ColumnName="mpp_gps_date" />
+                <ScalarProperty Name="mpp_gps_latitude" ColumnName="mpp_gps_latitude" />
+                <ScalarProperty Name="mpp_gps_longitude" ColumnName="mpp_gps_longitude" />
+                <ScalarProperty Name="mpp_travel_minutes" ColumnName="mpp_travel_minutes" />
+                <ScalarProperty Name="mpp_mile_day7" ColumnName="mpp_mile_day7" />
+                <ScalarProperty Name="mpp_home_latitude" ColumnName="mpp_home_latitude" />
+                <ScalarProperty Name="mpp_home_longitude" ColumnName="mpp_home_longitude" />
+                <ScalarProperty Name="mpp_last_log_date" ColumnName="mpp_last_log_date" />
+                <ScalarProperty Name="mpp_hours1" ColumnName="mpp_hours1" />
+                <ScalarProperty Name="mpp_hours2" ColumnName="mpp_hours2" />
+                <ScalarProperty Name="mpp_hours3" ColumnName="mpp_hours3" />
+                <ScalarProperty Name="mpp_home_city" ColumnName="mpp_home_city" />
+                <ScalarProperty Name="mpp_exp1_date" ColumnName="mpp_exp1_date" />
+                <ScalarProperty Name="mpp_exp2_date" ColumnName="mpp_exp2_date" />
+                <ScalarProperty Name="mpp_next_event" ColumnName="mpp_next_event" />
+                <ScalarProperty Name="mpp_next_cmp_id" ColumnName="mpp_next_cmp_id" />
+                <ScalarProperty Name="mpp_next_city" ColumnName="mpp_next_city" />
+                <ScalarProperty Name="mpp_next_state" ColumnName="mpp_next_state" />
+                <ScalarProperty Name="mpp_next_region1" ColumnName="mpp_next_region1" />
+                <ScalarProperty Name="mpp_next_region2" ColumnName="mpp_next_region2" />
+                <ScalarProperty Name="mpp_next_region3" ColumnName="mpp_next_region3" />
+                <ScalarProperty Name="mpp_next_region4" ColumnName="mpp_next_region4" />
+                <ScalarProperty Name="mpp_prior_event" ColumnName="mpp_prior_event" />
+                <ScalarProperty Name="mpp_prior_cmp_id" ColumnName="mpp_prior_cmp_id" />
+                <ScalarProperty Name="mpp_prior_city" ColumnName="mpp_prior_city" />
+                <ScalarProperty Name="mpp_prior_state" ColumnName="mpp_prior_state" />
+                <ScalarProperty Name="mpp_prior_region1" ColumnName="mpp_prior_region1" />
+                <ScalarProperty Name="mpp_prior_region2" ColumnName="mpp_prior_region2" />
+                <ScalarProperty Name="mpp_prior_region3" ColumnName="mpp_prior_region3" />
+                <ScalarProperty Name="mpp_prior_region4" ColumnName="mpp_prior_region4" />
+                <ScalarProperty Name="mpp_dailyhrsest" ColumnName="mpp_dailyhrsest" />
+                <ScalarProperty Name="mpp_weeklyhrsest" ColumnName="mpp_weeklyhrsest" />
+                <ScalarProperty Name="mpp_lastlog_cmp_id" ColumnName="mpp_lastlog_cmp_id" />
+                <ScalarProperty Name="mpp_lastlog_estdate" ColumnName="mpp_lastlog_estdate" />
+                <ScalarProperty Name="mpp_lastlog_cmp_name" ColumnName="mpp_lastlog_cmp_name" />
+                <ScalarProperty Name="mpp_estlog_datetime" ColumnName="mpp_estlog_datetime" />
+                <ScalarProperty Name="mpp_password" ColumnName="mpp_password" />
+                <ScalarProperty Name="mpp_qualificationlist" ColumnName="mpp_qualificationlist" />
+                <ScalarProperty Name="mpp_country" ColumnName="mpp_country" />
+                <ScalarProperty Name="mpp_gp_class" ColumnName="mpp_gp_class" />
+                <ScalarProperty Name="mpp_gps_odometer" ColumnName="mpp_gps_odometer" />
+                <ScalarProperty Name="mpp_ArvDep_Allowance_mins" ColumnName="mpp_ArvDep_Allowance_mins" />
+                <ScalarProperty Name="mpp_nbrdependents" ColumnName="mpp_nbrdependents" />
+                <ScalarProperty Name="mpp_avghourlypay" ColumnName="mpp_avghourlypay" />
+                <ScalarProperty Name="mpp_avgperiodpay" ColumnName="mpp_avgperiodpay" />
+                <ScalarProperty Name="mpp_dailyguarenteedhours" ColumnName="mpp_dailyguarenteedhours" />
+                <ScalarProperty Name="mpp_periodguarenteedhours" ColumnName="mpp_periodguarenteedhours" />
+                <ScalarProperty Name="mpp_comparisonflag" ColumnName="mpp_comparisonflag" />
+                <ScalarProperty Name="mpp_exp1_enddate" ColumnName="mpp_exp1_enddate" />
+                <ScalarProperty Name="mpp_exp2_enddate" ColumnName="mpp_exp2_enddate" />
+                <ScalarProperty Name="mpp_hours1_week" ColumnName="mpp_hours1_week" />
+                <ScalarProperty Name="mpp_bid_next_starttime" ColumnName="mpp_bid_next_starttime" />
+                <ScalarProperty Name="mpp_bid_next_hours" ColumnName="mpp_bid_next_hours" />
+                <ScalarProperty Name="mpp_bid_next_type" ColumnName="mpp_bid_next_type" />
+                <ScalarProperty Name="mpp_bid_next_routestore" ColumnName="mpp_bid_next_routestore" />
+                <ScalarProperty Name="mpp_90daystart" ColumnName="mpp_90daystart" />
+                <ScalarProperty Name="mpp_branch" ColumnName="mpp_branch" />
+                <ScalarProperty Name="mpp_athome_terminal" ColumnName="mpp_athome_terminal" />
+                <ScalarProperty Name="mpp_perdiem_flag" ColumnName="mpp_perdiem_flag" />
+                <ScalarProperty Name="mpp_perdiem_eff_date" ColumnName="mpp_perdiem_eff_date" />
+                <ScalarProperty Name="rec_id" ColumnName="rec_id" />
+                <ScalarProperty Name="mpp_cmpissuedpoints" ColumnName="mpp_cmpissuedpoints" />
+                <ScalarProperty Name="mpp_drivedate" ColumnName="mpp_drivedate" />
+                <ScalarProperty Name="mpp_yearsofsafedrive" ColumnName="mpp_yearsofsafedrive" />
+                <ScalarProperty Name="mpp_ysdasofdate" ColumnName="mpp_ysdasofdate" />
+                <ScalarProperty Name="mpp_mt_type_loaded" ColumnName="mpp_mt_type_loaded" />
+                <ScalarProperty Name="mpp_mt_type_empty" ColumnName="mpp_mt_type_empty" />
+                <ScalarProperty Name="mpp_gender" ColumnName="mpp_gender" />
+                <ScalarProperty Name="mpp_aceid" ColumnName="mpp_aceid" />
+                <ScalarProperty Name="mpp_aceidtype" ColumnName="mpp_aceidtype" />
+                <ScalarProperty Name="mpp_proximitycardid" ColumnName="mpp_proximitycardid" />
+                <ScalarProperty Name="mpp_citizenship_status" ColumnName="mpp_citizenship_status" />
+                <ScalarProperty Name="mpp_citizenship_country" ColumnName="mpp_citizenship_country" />
+                <ScalarProperty Name="mpp_pta_date" ColumnName="mpp_pta_date" />
+                <ScalarProperty Name="mpp_email" ColumnName="mpp_email" />
+                <ScalarProperty Name="mpp_eff_date" ColumnName="mpp_eff_date" />
+                <ScalarProperty Name="mpp_tuitioncost" ColumnName="mpp_tuitioncost" />
+                <ScalarProperty Name="mpp_forgive_amt" ColumnName="mpp_forgive_amt" />
+                <ScalarProperty Name="mpp_forgive_week_crd_amt" ColumnName="mpp_forgive_week_crd_amt" />
+                <ScalarProperty Name="mpp_forgive_period" ColumnName="mpp_forgive_period" />
+                <ScalarProperty Name="mpp_contribution_amt" ColumnName="mpp_contribution_amt" />
+                <ScalarProperty Name="mpp_cont_period" ColumnName="mpp_cont_period" />
+                <ScalarProperty Name="mpp_cont_week_amt" ColumnName="mpp_cont_week_amt" />
+                <ScalarProperty Name="mpp_forgive_crd_nbr" ColumnName="mpp_forgive_crd_nbr" />
+                <ScalarProperty Name="mpp_cont_ded_nbr" ColumnName="mpp_cont_ded_nbr" />
+                <ScalarProperty Name="mpp_eligible_start_date" ColumnName="mpp_eligible_start_date" />
+                <ScalarProperty Name="mpp_tuition_acct_status" ColumnName="mpp_tuition_acct_status" />
+                <ScalarProperty Name="mpp_train_anv_bonus_pd" ColumnName="mpp_train_anv_bonus_pd" />
+                <ScalarProperty Name="mpp_forgive_remain_balance" ColumnName="mpp_forgive_remain_balance" />
+                <ScalarProperty Name="mpp_cont_remain_balance" ColumnName="mpp_cont_remain_balance" />
+                <ScalarProperty Name="mpp_train_anv_bonus_elig_date" ColumnName="mpp_train_anv_bonus_elig_date" />
+                <ScalarProperty Name="mpp_train_anv_bonus_amt" ColumnName="mpp_train_anv_bonus_amt" />
+                <ScalarProperty Name="mpp_updt_forgive_crd_nbr" ColumnName="mpp_updt_forgive_crd_nbr" />
+                <ScalarProperty Name="mpp_updt_cont_ded_nbr" ColumnName="mpp_updt_cont_ded_nbr" />
+                <ScalarProperty Name="mpp_updt_forgive_remain_balance" ColumnName="mpp_updt_forgive_remain_balance" />
+                <ScalarProperty Name="mpp_updt_cont_remain_balance" ColumnName="mpp_updt_cont_remain_balance" />
+                <ScalarProperty Name="mpp_comment1" ColumnName="mpp_comment1" />
+                <ScalarProperty Name="sth_id" ColumnName="sth_id" />
+                <ScalarProperty Name="sth_startdate" ColumnName="sth_startdate" />
+                <ScalarProperty Name="mpp_milestonext" ColumnName="mpp_milestonext" />
+                <ScalarProperty Name="mpp_next_stopnumber" ColumnName="mpp_next_stopnumber" />
+                <ScalarProperty Name="mpp_next_legnumber" ColumnName="mpp_next_legnumber" />
+                <ScalarProperty Name="mpp_next_stoparrival" ColumnName="mpp_next_stoparrival" />
+                <ScalarProperty Name="mpp_last_calcdate" ColumnName="mpp_last_calcdate" />
+                <ScalarProperty Name="mpp_default_shiftstart" ColumnName="mpp_default_shiftstart" />
+                <ScalarProperty Name="mpp_default_shiftend" ColumnName="mpp_default_shiftend" />
+                <ScalarProperty Name="mpp_lastmobilecomm" ColumnName="mpp_lastmobilecomm" />
+                <ScalarProperty Name="mpp_shiftnumber" ColumnName="mpp_shiftnumber" />
+                <ScalarProperty Name="mpp_cyclic_dsp_enabled" ColumnName="mpp_cyclic_dsp_enabled" />
+                <ScalarProperty Name="mpp_preassign_ack_required" ColumnName="mpp_preassign_ack_required" />
+                <ScalarProperty Name="mpp_shift_start" ColumnName="mpp_shift_start" />
+                <ScalarProperty Name="mpp_shift_end" ColumnName="mpp_shift_end" />
+                <ScalarProperty Name="mpp_prior_cmp_othertype1" ColumnName="mpp_prior_cmp_othertype1" />
+                <ScalarProperty Name="mpp_next_cmp_othertype1" ColumnName="mpp_next_cmp_othertype1" />
+                <ScalarProperty Name="mpp_hrs_dbl_time" ColumnName="mpp_hrs_dbl_time" />
+                <ScalarProperty Name="mpp_override_default_ot" ColumnName="mpp_override_default_ot" />
+                <ScalarProperty Name="mpp_default_shiftpriority" ColumnName="mpp_default_shiftpriority" />
+                <ScalarProperty Name="mpp_driverlogtype" ColumnName="mpp_driverlogtype" />
+                <ScalarProperty Name="mpp_driverlogGroups" ColumnName="mpp_driverlogGroups" />
+                <ScalarProperty Name="mpp_driverlogTerminal" ColumnName="mpp_driverlogTerminal" />
+                <ScalarProperty Name="mpp_hos_poll_required" ColumnName="mpp_hos_poll_required" />
+                <ScalarProperty Name="mpp_fourteenhrest" ColumnName="mpp_fourteenhrest" />
+                <ScalarProperty Name="rowsec_rsrv_id" ColumnName="rowsec_rsrv_id" />
+                <ScalarProperty Name="mpp_csa_score" ColumnName="mpp_csa_score" />
+                <ScalarProperty Name="mpp_advance_rate_solo" ColumnName="mpp_advance_rate_solo" />
+                <ScalarProperty Name="mpp_advance_rate_team" ColumnName="mpp_advance_rate_team" />
+                <ScalarProperty Name="mpp_employeetype" ColumnName="mpp_employeetype" />
+                <ScalarProperty Name="mpp_timeoffbetweenduty" ColumnName="mpp_timeoffbetweenduty" />
+                <ScalarProperty Name="mpp_shift_isbackup" ColumnName="mpp_shift_isbackup" />
+                <ScalarProperty Name="mpp_shift_backup_mpp_id" ColumnName="mpp_shift_backup_mpp_id" />
+                <ScalarProperty Name="mpp_rtw_date" ColumnName="mpp_rtw_date" />
+                <ScalarProperty Name="mpp_mcommID" ColumnName="mpp_mcommID" />
+                <ScalarProperty Name="mpp_mcommType" ColumnName="mpp_mcommType" />
+                <ScalarProperty Name="mpp_hosstatus" ColumnName="mpp_hosstatus" />
+                <ScalarProperty Name="mpp_hosstatusdate" ColumnName="mpp_hosstatusdate" />
+                <ScalarProperty Name="mpp_hosactivityupdateon" ColumnName="mpp_hosactivityupdateon" />
+                <ScalarProperty Name="mpp_last_DailyLogsDate" ColumnName="mpp_last_DailyLogsDate" />
+                <ScalarProperty Name="mpp_last_DailyLogsConfirmedDate" ColumnName="mpp_last_DailyLogsConfirmedDate" />
+                <ScalarProperty Name="mpp_subsistence_eligible" ColumnName="mpp_subsistence_eligible" />
+                <ScalarProperty Name="mpp_grandfather_date" ColumnName="mpp_grandfather_date" />
+                <ScalarProperty Name="guaranteed_pay_promised" ColumnName="guaranteed_pay_promised" />
+                <ScalarProperty Name="mpp_subsistence_cmp_id" ColumnName="mpp_subsistence_cmp_id" />
+                <ScalarProperty Name="mpp_subsistence_pay_radius" ColumnName="mpp_subsistence_pay_radius" />
+                <ScalarProperty Name="mpp_subsistence_use_at_home" ColumnName="mpp_subsistence_use_at_home" />
+                <ScalarProperty Name="mpp_subsistence_home_cmp_id" ColumnName="mpp_subsistence_home_cmp_id" />
+                <ScalarProperty Name="mpp_trainee" ColumnName="mpp_trainee" />
+                <ScalarProperty Name="mpp_trainer" ColumnName="mpp_trainer" />
+                <ScalarProperty Name="PayScheduleId" ColumnName="PayScheduleId" />
+                <ScalarProperty Name="mpp_gps_heading" ColumnName="mpp_gps_heading" />
+                <ScalarProperty Name="mpp_gps_speed" ColumnName="mpp_gps_speed" />
+                <ScalarProperty Name="CompensationType" ColumnName="CompensationType" />
+                <ScalarProperty Name="OriginDestinationOption" ColumnName="OriginDestinationOption" />
+                <ScalarProperty Name="mpp_carrier" ColumnName="mpp_carrier" />
+                <ScalarProperty Name="mpp_note" ColumnName="mpp_note" />
+                <ScalarProperty Name="mpp_note_updatedate" ColumnName="mpp_note_updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

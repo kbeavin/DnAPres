@@ -1,0 +1,25 @@
+﻿.print-preview {
+    position: relative;
+    min-height: 300px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+
+.print-overlay {
+    position: absolute;
+    margin: -15px;
+    min-height: 300px;
+    width: 100%;
+    background-color: #efefef;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}

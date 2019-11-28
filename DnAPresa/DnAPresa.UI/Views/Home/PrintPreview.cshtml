@@ -1,0 +1,125 @@
+﻿@model List<DrugScreen>
+@using DnAPresa.UI.Models
+
+<div id="print-div" class="content-box">
+
+    <h2 id="print-head">Random Drug & Alchohol Screening Report</h2>
+    <p>@System.DateTime.Now</p>
+
+    <div class="row">
+
+        <table>
+            <caption> Drug Screen</caption>
+            <thead>
+                <tr>
+
+                    <th>Driver ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var emp in Model)
+                {
+                    if (emp.Alcohol == false && emp.Substitute == false)
+                    {
+
+                        <tr>
+                            <td>@emp.ID</td>
+                            <td>@emp.FName</td>
+                            <td>@emp.LName</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+        <table>
+            <caption>Drug & Alchohol</caption>
+            <thead>
+                <tr>
+                    <th>Driver ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var emp in Model)
+                {
+                    if (emp.Alcohol == true && emp.Substitute == false)
+                    {
+
+                        <tr>
+                            <td>@emp.ID</td>
+                            <td>@emp.FName</td>
+                            <td>@emp.LName</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+        <table>
+            <caption>Substitutes/Alternates</caption>
+            <thead>
+                <tr>
+
+                    <th>Driver ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var emp in Model)
+                {
+                    if (emp.Substitute == true)
+                    {
+
+                        <tr>
+                            <td>@emp.ID</td>
+                            <td>@emp.FName</td>
+                            <td>@emp.LName</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+    });
+
+    function printContent() {
+
+        var restorePage = document.body.innerHTML;
+        var printContent = document.getElementById("print-div").innerHTML;
+
+        document.body.innerHTML = printContent;
+        window.print();
+        document.body.innerHTML = restorePage;
+    }
+
+</script>

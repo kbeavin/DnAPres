@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnA Presa", "DnAScreener\DnA Presa.csproj", "{3F6C0CA4-4E8A-4EF8-AB4A-ACFDA18E4B80}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DnAPRESASetup", "DnASludgerSetup\DnASludgerSetup.vdproj", "{1EFAE8DA-87A8-4B5F-99D0-F2D568DBDA9C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://lb-tfsvr:8080/tfs/tfsdefaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DnAScreener\\DnA\u0020Presa.csproj
+		SccProjectName1 = DnAScreener
+		SccLocalPath1 = DnAScreener
+		SccProjectUniqueName2 = DnASludgerSetup\\DnASludgerSetup.vdproj
+		SccProjectName2 = DnASludgerSetup
+		SccLocalPath2 = DnASludgerSetup
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F6C0CA4-4E8A-4EF8-AB4A-ACFDA18E4B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6C0CA4-4E8A-4EF8-AB4A-ACFDA18E4B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F6C0CA4-4E8A-4EF8-AB4A-ACFDA18E4B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F6C0CA4-4E8A-4EF8-AB4A-ACFDA18E4B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EFAE8DA-87A8-4B5F-99D0-F2D568DBDA9C}.Debug|Any CPU.ActiveCfg = Debug
+		{1EFAE8DA-87A8-4B5F-99D0-F2D568DBDA9C}.Debug|Any CPU.Build.0 = Debug
+		{1EFAE8DA-87A8-4B5F-99D0-F2D568DBDA9C}.Release|Any CPU.ActiveCfg = Release
+		{1EFAE8DA-87A8-4B5F-99D0-F2D568DBDA9C}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

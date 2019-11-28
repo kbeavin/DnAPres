@@ -1,0 +1,142 @@
+﻿@model DnAPresa.Web.Models.EmployeeListModel
+
+<section>
+
+    <div class="">
+
+        <div class="content-box">
+
+            <header>
+
+                <h1>DnA Presa</h1>
+
+                <span id="print-button" class="print-button">Print</span>
+
+                <span id="filter-toggle" class="filter-toggle">Filter</span>
+
+            </header>
+
+            <div class="filter">
+
+                @* Content Loaded Dynamically *@
+
+            </div>
+
+            <div class="cb-body">
+
+                <div class="print-preview">
+
+                    @* Content Loaded Dynamically *@
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+            Get_Filter();
+            InitDataTable();
+
+            $(".filter-toggle").on("click", function () {
+                $(".filter-container").slideToggle();
+            });
+
+            setTimeout(function () {
+                $(".filter-toggle").trigger('click');
+            }, 800);
+
+            $(".print-button").on("click", function () {
+                printContent();
+            });
+        });
+
+        function Get_Filter() {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/_Filter',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $(".filter").html(response.PartialView);
+                }
+            });
+        }
+
+        // Initialize Data Table
+        function InitDataTable() {
+            $('#dataTable').DataTable({
+                responsive: true,
+                searching: false,
+                paging: false,
+                columns: [
+                    { data: "number" },
+                    { data: "name" },
+                    { data: "drug" },
+                    { data: "alc" },
+                    { data: "sub" }
+                ],
+                order: [[2, 'desc'], [3, 'asc'], [0, 'asc']],
+                drawCallback: function (settings) { // This got out of hand fast KB
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+                    var counter = 0;
+                    api.column(2, { page: 'current' }).data().each(function (group, i) {
+                        if (counter == 0) {
+                            if (last !== group) {
+
+                                $(rows).eq(i).before(
+                                    '<tr class="group"><td colspan="8" style="background-color: #efefef;font-weight:700;color:#4f4e4e;">Screening Type: Drug</td></tr>'
+                                );
+
+                                counter++
+                                last = group;
+                            }
+                        }
+                    });
+                    counter = 0;
+                    api.column(3, { page: 'current' }).data().each(function (group, i) {
+                        if (counter == 0) {
+                            if (last !== group) {
+                                if (group === "True") {
+                                    $(rows).eq(i).before(
+                                        '<tr class="group"><td colspan="8" style="background-color: #efefef;font-weight:700;color:#4f4e4e;">Screening Type: Drug and Alchohol</td></tr>'
+                                    );
+                                    counter++
+                                    last = group;
+                                }
+                                last = group;
+                            }
+                        }
+                    });
+                    counter = 0;
+                    api.column(4, { page: 'current' }).data().each(function (group, i) {
+                        if (counter == 0) {
+                            if (last !== group) {
+                                if (group === "True") {
+                                    $(rows).eq(i).before(
+                                        '<tr class="group"><td colspan="8" style="background-color: #efefef;font-weight:700;color:#4f4e4e;">Screening Type: Substitutes</td></tr>'
+                                    );
+                                    counter++
+                                    last = group;
+                                }
+                                last = group;
+                            }
+                        }
+                    });
+                    counter = 0;
+                }
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,101 @@
+﻿@model LoginModels
+@using DnAPresa.UI.Models
+
+@{
+    var mData = new LoginModels();
+}
+
+<div class="row">
+
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-3 content-box">
+
+        <h2>Login</h2>
+
+        <div class="row">
+
+            <div class="col-sm-4 mt7">
+
+                <span>Username:</span>
+
+            </div>
+
+            <div class="col-sm-8">
+
+                <input id="Username" type="text" class="form-control">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-4 mt7">
+
+                <span>Password:</span>
+
+            </div>
+            <div class="col-sm-8">
+
+                <input id="Password" type="text" class="form-control">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <button id="LoginBtn" class="btn btn-default">Login</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-8"></div>
+
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#LoginBtn").on("click", function () {
+                SetUserCredentials();
+            });
+
+        });
+
+        function SetUserCredentials() {
+
+            var mData = {
+                Username: $("#Username").val(),
+                Password: $("#Password").val()
+            }
+
+            window.localStorage.setItem("Username", mData.Username);
+            window.localStorage.setItem("Password", mData.Password);
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/Index/',
+                data: JSON.stringify(mData),
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    window.location = "/Home/Driver";
+                }
+
+            })
+        }
+
+    </script>
+}

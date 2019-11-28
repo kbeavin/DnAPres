@@ -1,0 +1,133 @@
+﻿@model TabModels
+@using DnAPresa.UI.Models
+
+<div class="row">
+
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-3 content-box">
+
+        <h2>Duke</h2>
+
+        <div class="row">
+
+            <div class="col-sm-4 mt7">
+
+                <span>Total Active Drivers:</span>
+
+            </div>
+
+            <div class="col-sm-8">
+
+                <input id="TotalActiveDrivers" type="text" class="form-control" value="@Model.TotalActiveDrivers" disabled>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-4">
+
+                <span>Driver Pool Percentage:</span>
+
+            </div>
+            <div class="col-sm-8">
+
+                <input id="DriverPoolPercentage" type="number" class="form-control">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-4">
+
+                <span>Alchohol Percentage:</span>
+
+            </div>
+            <div class="col-sm-8">
+
+                <input id="AlchoholPercentage" type="number" class="form-control">
+
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+
+                        <button id="DriverBtn" class="btn btn-default">Submit</button>
+
+                    </div>
+
+                    <div class="col-sm-8">
+
+                        <button id="print-btn" class="btn btn-default" onclick="printContent()" style="display: none;">Print</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-6">
+
+        <div id="print-preview" style="display: none;"></div>
+
+    </div>
+
+    <div class="col-sm-1"></div>
+
+</div>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#DriverBtn").on("click", function () {
+                Get_DukeReport();
+            });
+        });
+
+        function Get_DukeReport() {
+            var model = {
+                Username: "hey",
+                Password: "hey",
+                TotalActiveDrivers: $("#TotalActiveDrivers").val(),
+                DriverPoolPercentage: $("#DriverPoolPercentage").val(),
+                AlchoholPercentage: $("#AlchoholPercentage").val(),
+                PrintActiveDriverList: $("#PrintActiveDriverList").is(":checked")
+            }
+
+            return $.ajax({
+                type: 'POST',
+                url: '/Home/Get_DukeReport',
+                data: JSON.stringify(model),
+                cache: false,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $("#print-preview").html(response.PartialView).fadeIn("slow");
+                    $("#print-btn").fadeIn("slow");                }
+            });
+        }
+
+    </script>
+
+}

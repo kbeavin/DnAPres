@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DnAPRESA_x0020_Schema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="DnAPRESA_x0020_Schema" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DrugPool">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmployID" type="xs:string" minOccurs="0" />
+              <xs:element name="lastname" type="xs:string" minOccurs="0" />
+              <xs:element name="frstname" type="xs:string" minOccurs="0" />
+              <xs:element name="midlname" type="xs:string" minOccurs="0" />
+              <xs:element name="emplclas" type="xs:string" minOccurs="0" />
+              <xs:element name="db" type="xs:string" minOccurs="0" />
+              <xs:element name="testsel" type="xs:string" minOccurs="0" />
+              <xs:element name="Report_DateTime" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CountData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalActive" type="xs:string" minOccurs="0" />
+              <xs:element name="PoolPerc" type="xs:string" minOccurs="0" />
+              <xs:element name="AlchPerc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
