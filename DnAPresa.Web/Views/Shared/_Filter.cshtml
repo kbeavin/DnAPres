@@ -79,12 +79,12 @@
     $(function () {
         EvaulateDropDownLists();
 
-        $("#EmpClassList, #EmpTerminalList").on("change", function () {
+        $("body").on("change", "#EmpClassList, #EmpTerminalList", function () {
             EvaulateDropDownLists();
             Get_FilteredEmployees();
         });
 
-        $("#DrugPool, #DrugPoolPercent, #AlcPool, #AlcPoolPercent").on("keyup", delay(function (e) {
+        $("body").on("keyup", "#DrugPool, #DrugPoolPercent, #AlcPool, #AlcPoolPercent", delay(function (e) {
             Get_FilteredEmployees();
         }, 500));
     });

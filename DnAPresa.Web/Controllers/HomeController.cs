@@ -57,7 +57,7 @@ namespace DnAPresa.Web.Controllers
                 var mResponse = EmployeeProcessor.Get_FilteredEmployees(mData);
 
                 // Assignment to view model
-                foreach (var emp in mResponse)
+                foreach (var emp in mResponse.Data)
                 {
                     viewModel.Employees.Add(new EmployeeModel
                     {
@@ -77,11 +77,8 @@ namespace DnAPresa.Web.Controllers
             }
             catch (Exception ex)
             {
-                // TODO: return processor response/error handling
-                Console.WriteLine(ex);
+                return Json(new { ex.Message });
             }
-
-            return View(viewModel);
         }
 
         #endregion

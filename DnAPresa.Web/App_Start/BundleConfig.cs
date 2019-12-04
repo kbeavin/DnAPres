@@ -36,7 +36,7 @@ namespace DnAPresa.Web
                       "~/Content/packages/DataTables/css/jquery.dataTables.css",
                       "~/Content/packages/DataTables/css/dataTables.bootstrap.css",
                       "~/Cotent/packages/DataTables/css/rowGroup.dataTables.css",
-                      "~/Content/css/main.css"));
+                      "~/Content/main/main.css"));
         }
     }
 }

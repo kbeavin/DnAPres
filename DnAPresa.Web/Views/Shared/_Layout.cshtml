@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DnA Presa</title>
 
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/packages/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/packages/DataTables/css/rowGroup.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/main/main.min.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/modernizr/modernizr-2.8.3.js"></script>
 </head>
 <body>
 
@@ -17,10 +19,14 @@
 
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/dataTables")
-    @Scripts.Render("~/bundles/global")
+    <script src="~/Content/Scripts/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/Scripts/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/Content/Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/packages/DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/packages/DataTables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/packages/DataTables/js/dataTables.rowGroup.min.js"></script>
+    <script src="~/Content/Scripts/global/global.js"></script>
+    <script src="~/Content/Scripts/global/app.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>

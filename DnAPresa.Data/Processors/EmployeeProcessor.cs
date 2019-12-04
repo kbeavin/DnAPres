@@ -16,9 +16,9 @@ namespace DnAPresa.Data.Processors
         /// <param name="empClass">Filters by Tier3 column</param>
         /// <param name="empTerminal">Filters by mpp_terminal column</param>
         /// <returns>a List of Employee objects</returns>
-        public static List<Employee> Get_FilteredEmployees(Employee model)
+        public static DTO Get_FilteredEmployees(Employee model)
         {
-            List<Employee> filteredEmployees = new List<Employee>();
+            DTO dto = new DTO();
 
             try
             {
@@ -31,22 +31,21 @@ namespace DnAPresa.Data.Processors
                 var drivers = Get_Drivers(eTerm);
 
                 // Combine Lists to one
-                filteredEmployees.AddRange(employees);
-                filteredEmployees.AddRange(drivers);
+                dto.Data.AddRange(employees.Data);
+                dto.Data.AddRange(drivers.Data);
 
                 // Set the properties for Random Employees
-                if (filteredEmployees != null && filteredEmployees.Count != 0)
+                if (dto.Data != null && dto.Data.Count != 0)
                 {
-                    filteredEmployees = Common.Utilities.Utilities.Set_Randoms(filteredEmployees, model);
+                    dto.Data = Common.Utilities.Utilities.Set_Randoms(dto.Data, model);
                 }
             }
             catch (Exception ex)
             {
-                // TODO: return processor response/error handling
-                Console.WriteLine(ex);
+                dto.Message = ex.Message;
             }
 
-            return filteredEmployees;
+            return dto;
         }
 
         /// <summary>
@@ -54,50 +53,49 @@ namespace DnAPresa.Data.Processors
         /// </summary>
         /// <param name="empClass">Filters by Tier3 column</param>
         /// <returns>a List of Employee objects</returns>
-        private static List<Employee> Get_Employees(string empClass = null)
+        private static DTO Get_Employees(string empClass = null)
         {
-            List<Employee> employees = new List<Employee>();
-            if (empClass == "Drivers") { return employees; }
+            DTO dto = new DTO();
+            if (empClass == "Drivers") { return dto; }
 
-            try
-            {
-                using (CarterProdEntities CarterProd = new CarterProdEntities())
+                try
                 {
-                    // Query DB
-                    var query = from ce in CarterProd.tbl_DNA_CurrentEmployees
-                                select new
-                                {
-                                    ce.EmployeeNumber,
-                                    ce.EmployeeFullName,
-                                    ce.Tier3
-                                };
-
-                    // Filter Query by empClass parameter
-                    query = string.IsNullOrEmpty(empClass) ? query : query.Where(p => p.Tier3 == empClass);
-
-                    // Create List of Employee's
-                    foreach (var emp in query)
+                    using (CarterProdEntities CarterProd = new CarterProdEntities())
                     {
-                        if (!string.IsNullOrEmpty(emp.EmployeeNumber))
+                        // Query DB
+                        var query = from ce in CarterProd.tbl_DNA_CurrentEmployees
+                                    select new
+                                    {
+                                        ce.EmployeeNumber,
+                                        ce.EmployeeFullName,
+                                        ce.Tier3
+                                    };
+
+                        // Filter Query by empClass parameter
+                        query = string.IsNullOrEmpty(empClass) ? query : query.Where(p => p.Tier3 == empClass);
+
+                        // Create List of Employee's
+                        foreach (var emp in query)
                         {
-                            employees.Add(new Employee
+                            if (!string.IsNullOrEmpty(emp.EmployeeNumber))
                             {
-                                EmployeeNumber = emp.EmployeeNumber,
-                                EmployeeFullName = emp.EmployeeFullName,
-                                Tier3 = emp.Tier3,
-                                Terminal = "AND"
-                            });
+                                dto.Data.Add(new Employee
+                                {
+                                    EmployeeNumber = emp.EmployeeNumber,
+                                    EmployeeFullName = emp.EmployeeFullName,
+                                    Tier3 = emp.Tier3,
+                                    Terminal = "AND"
+                                });
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                // TODO: return processor response/error handling
-                Console.WriteLine(ex);
-            }
-
-            return employees;
+                catch (Exception ex)
+                {
+                    dto.Message = ex.Message;
+                }
+            
+            return dto;
         }
 
         /// <summary>
@@ -105,53 +103,52 @@ namespace DnAPresa.Data.Processors
         /// </summary>
         /// <param name="empTerminal">Filters by mpp_terminal column</param>
         /// <returns>a List of Employee objects</returns>
-        private static List<Employee> Get_Drivers(string empTerminal = null)
+        private static DTO Get_Drivers(string empTerminal = null)
         {
-            List<Employee> employees = new List<Employee>();
-            if (empTerminal == string.Empty) { return employees; }
+            DTO dto = new DTO();
+            if (empTerminal == string.Empty) { return dto; }
 
-            try
-            {
-                using (TMW_LiveEntities1 TMW = new TMW_LiveEntities1())
+                try
                 {
-                    // Query DB
-                    var query = from cd in TMW.manpowerprofiles
-                                join lf in TMW.labelfiles on cd.mpp_terminal equals lf.abbr
-                                where cd.mpp_terminationdt > DateTime.Now && lf.labeldefinition == "terminal"
-                                select new
-                                {
-                                    cd.mpp_id,
-                                    cd.mpp_firstname,
-                                    cd.mpp_lastname,
-                                    cd.mpp_terminal
-                                };
-
-                    // Filter Query by empClass parameter
-                    query = string.IsNullOrEmpty(empTerminal) ? query : query.Where(p => p.mpp_terminal == empTerminal);
-
-                    // Create List of Employee's
-                    foreach (var emp in query)
+                    using (TMW_LiveEntities1 TMW = new TMW_LiveEntities1())
                     {
-                        if (!string.IsNullOrEmpty(emp.mpp_id))
+                        // Query DB
+                        var query = from cd in TMW.manpowerprofiles
+                                    join lf in TMW.labelfiles on cd.mpp_terminal equals lf.abbr
+                                    where cd.mpp_terminationdt > DateTime.Now && lf.labeldefinition == "terminal"
+                                    select new
+                                    {
+                                        cd.mpp_id,
+                                        cd.mpp_firstname,
+                                        cd.mpp_lastname,
+                                        cd.mpp_terminal
+                                    };
+
+                        // Filter Query by empClass parameter
+                        query = string.IsNullOrEmpty(empTerminal) ? query : query.Where(p => p.mpp_terminal == empTerminal);
+
+                        // Create List of Employee's
+                        foreach (var emp in query)
                         {
-                            employees.Add(new Employee
+                            if (!string.IsNullOrEmpty(emp.mpp_id))
                             {
-                                EmployeeNumber = emp.mpp_id,
-                                EmployeeFullName = emp.mpp_firstname + " " + emp.mpp_lastname,
-                                Tier3 = "Drivers",
-                                Terminal = emp.mpp_terminal
-                            });
+                                dto.Data.Add(new Employee
+                                {
+                                    EmployeeNumber = emp.mpp_id,
+                                    EmployeeFullName = emp.mpp_firstname + " " + emp.mpp_lastname,
+                                    Tier3 = "Drivers",
+                                    Terminal = emp.mpp_terminal
+                                });
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                // TODO: return processor response/error handling
-                Console.WriteLine(ex);
-            }
+                catch (Exception ex)
+                {
+                    dto.Message = ex.Message;
+                }
 
-            return employees;
+            return dto;
         }
 
         #endregion

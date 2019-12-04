@@ -139,8 +139,8 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\css\main.css" />
-    <Content Include="Content\css\main.min.css">
+    <Content Include="Content\main\main.css" />
+    <Content Include="Content\main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="Content\assets\logo.png" />

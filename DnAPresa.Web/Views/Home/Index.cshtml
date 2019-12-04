@@ -46,7 +46,7 @@
             Get_Filter();
             InitDataTable();
 
-            $(".filter-toggle").on("click", function () {
+            $("body").on("click", ".filter-toggle", function () {
                 $(".filter-container").slideToggle();
             });
 
@@ -54,7 +54,7 @@
                 $(".filter-toggle").trigger('click');
             }, 800);
 
-            $(".print-button").on("click", function () {
+            $("body").on("click", ".print-button", function () {
                 printContent();
             });
         });
