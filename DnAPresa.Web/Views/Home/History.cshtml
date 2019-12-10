@@ -1,0 +1,78 @@
+﻿@model DnAPresa.Web.Models.EmployeeListModel
+
+<section>
+
+    <div class="">
+
+        <div class="content-box">
+
+            <header>
+
+                <h1>DnA History</h1>
+
+                <span id="print-button" class="print-button">Print</span>
+
+                <span id="filter-toggle" class="filter-toggle">Filter</span>
+
+            </header>
+
+            <div class="filter">
+
+                @* Content Loaded Dynamically *@
+
+            </div>
+
+            <div class="cb-body">
+
+                <div class="print-preview">
+
+                    @* Content Loaded Dynamically *@
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(function () {
+            Get_HistoryFilter();
+            InitDataTable();
+
+            $("body").on("click", ".filter-toggle", function () {
+                $(".filter-container").slideToggle();
+            });
+
+            $("body").on("click", ".print-button", function () {
+                printContent();
+            });
+        });
+
+        function Get_HistoryFilter() {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/_HistoryFilter',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $(".filter").html(response.PartialView);
+                }
+            });
+        }
+
+        function InitDataTable() {
+            $("#dataTable").DataTable({
+                responsive: true
+            });
+        }
+
+    </script>
+    
+}

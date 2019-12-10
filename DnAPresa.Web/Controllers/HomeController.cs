@@ -10,7 +10,7 @@ namespace DnAPresa.Web.Controllers
     public class HomeController : Controller
     {
 
-        #region Get Methods
+        #region Index
 
         public ActionResult Index()
         {
@@ -81,10 +81,6 @@ namespace DnAPresa.Web.Controllers
             }
         }
 
-        #endregion
-
-        #region Post Methods
-
         public ActionResult Insert_DnAHistory(EmployeeListModel model)
         {
             Common.Models.EmployeeList mData = new Common.Models.EmployeeList();
@@ -108,6 +104,73 @@ namespace DnAPresa.Web.Controllers
                 var mResponse = EmployeeProcessor.Insert_DnAHistory(mData);
 
                 return Json(new { mResponse.Success });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { ex.Message });
+            }
+        }
+
+        #endregion
+
+        #region History
+
+        public ActionResult History()
+        {
+            return View();
+        }
+
+        public ActionResult _HistoryFilter()
+        {
+            EmployeeModel viewModel = new EmployeeModel();
+
+            try
+            {
+                // Get Dictionaries for DropDownLists
+                ViewBag.EmpClassList = Utilities.Get_EmpClassList();
+                ViewBag.EmpTerminalList = Utilities.Get_EmpTerminalList();
+            }
+            catch (Exception ex)
+            {
+                // TODO: return processor response/error handling
+                Console.WriteLine(ex);
+            }
+
+            // Convert partial view to return as Json
+            string viewContent = ConvertViewToString("_HistoryFilter", viewModel);
+            return Json(new { PartialView = viewContent });
+        }
+
+        public ActionResult Get_FilteredHistory(EmployeeModel model)
+        {
+            EmployeeListModel viewModel = new EmployeeListModel();
+
+            try
+            {
+                // Convert to Data Model
+                Common.Models.Employee mData = new Common.Models.Employee
+                {
+                    Tier3 = model.Tier3,
+                    Terminal = model.Terminal,
+                    DrugPool = model.DrugPool,
+                    AlcPool = model.AlcPool
+                };
+
+                // Go get our filtered list of employees
+                var mResponse = EmployeeProcessor.Get_FilteredHistory(mData);
+
+                // Assignment to view model
+                foreach (var emp in mResponse.Data)
+                {
+                    viewModel.Employees.Add(new EmployeeModel
+                    {
+                    
+                    });
+                }
+
+                // Convert partial view to return as Json
+                string viewContent = ConvertViewToString("_HistoryPreview", viewModel);
+                return Json(new { PartialView = viewContent });
             }
             catch (Exception ex)
             {

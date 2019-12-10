@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace DnAPresa.Common.Models
 {
-    public class DTO
+    public class DTO<T>
     {
         public DTO()
         {
-            Data = new List<Employee>();
+            Data = new List<T>();
         }
 
         public int Code { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }
-        public List<Employee> Data { get; set; }
+        public List<T> Data { get; set; }
 
         public override string ToString()
         {

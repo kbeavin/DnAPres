@@ -18,9 +18,9 @@ namespace DnAPresa.Data.Processors
         /// <param name="empClass">Filters by Tier3 column</param>
         /// <param name="empTerminal">Filters by mpp_terminal column</param>
         /// <returns>a List of Employee objects</returns>
-        public static DTO Get_FilteredEmployees(Employee model)
+        public static DTO<Employee> Get_FilteredEmployees(Employee model)
         {
-            DTO dto = new DTO();
+            DTO<Employee> dto = new DTO<Employee>();
 
             try
             {
@@ -50,14 +50,56 @@ namespace DnAPresa.Data.Processors
             return dto;
         }
 
+        public static DTO<EmployeeHistory> Get_FilteredHistory(Employee model)
+        {
+            DTO<EmployeeHistory> dto = new DTO<EmployeeHistory>();
+
+            try
+            {
+                using (TMW_LiveEntities2 TMW = new TMW_LiveEntities2())
+                {
+                    var query = from h in TMW.carter_DnAHistory
+                                select new
+                                {
+                                    h.EmployID,
+                                    h.lastname,
+                                    h.frstname,
+                                    h.midlname,
+                                    h.emplclas,
+                                    h.db,
+                                    h.testsel,
+                                    h.Report_DateTime
+                                };
+
+                    // Create List of EmployeeHistory's
+                    foreach (var emp in query)
+                    {
+                        dto.Data.Add(new EmployeeHistory
+                        {
+                            EmployID = emp.EmployID,
+                            lastname = emp.lastname,
+                        });
+                    }
+                }
+
+                dto.Success = true;
+            }
+            catch (Exception ex)
+            {
+                dto.Message = ex.Message;
+            }
+
+            return dto;
+        }
+
         /// <summary>
         /// Gets all employees from tbl_DNA_CurrentEmployees Table
         /// </summary>
         /// <param name="empClass">Filters by Tier3 column</param>
         /// <returns>a List of Employee objects</returns>
-        private static DTO Get_Employees(string empClass = null)
+        private static DTO<Employee> Get_Employees(string empClass = null)
         {
-            DTO dto = new DTO();
+            DTO<Employee> dto = new DTO<Employee>();
             if (empClass == "Drivers") { return dto; }
 
             try
@@ -107,9 +149,9 @@ namespace DnAPresa.Data.Processors
         /// </summary>
         /// <param name="empTerminal">Filters by mpp_terminal column</param>
         /// <returns>a List of Employee objects</returns>
-        private static DTO Get_Drivers(string empTerminal = null)
+        private static DTO<Employee> Get_Drivers(string empTerminal = null)
         {
-            DTO dto = new DTO();
+            DTO<Employee> dto = new DTO<Employee>();
             if (empTerminal == string.Empty) { return dto; }
 
             try
@@ -166,9 +208,9 @@ namespace DnAPresa.Data.Processors
         /// </summary>
         /// <param name="model">List of Employees</param>
         /// <returns>an DTO with success bool</returns>
-        public static DTO Insert_DnAHistory(EmployeeList model)
+        public static DTO<EmployeeList> Insert_DnAHistory(EmployeeList model)
         {
-            DTO dto = new DTO();
+            DTO<EmployeeList> dto = new DTO<EmployeeList>();
 
             try
             {
