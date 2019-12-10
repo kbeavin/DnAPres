@@ -68,6 +68,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarterProd.edmx</DependentUpon>
     </Compile>
+    <Compile Include="carter_DnAHistory.cs">
+      <DependentUpon>DnAHistory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DnAHistory.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DnAHistory.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DnAHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DnAHistory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DnAHistory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DnAHistory.edmx</DependentUpon>
+    </Compile>
     <Compile Include="labelfile.cs">
       <DependentUpon>TMW_Live.tt</DependentUpon>
     </Compile>
@@ -104,6 +122,14 @@
     <None Include="CarterProd.edmx.diagram">
       <DependentUpon>CarterProd.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="DnAHistory.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DnAHistory.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>DnAPresa.Common</CustomToolNamespace>
+    </EntityDeploy>
+    <None Include="DnAHistory.edmx.diagram">
+      <DependentUpon>DnAHistory.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="TMW_Live.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -126,6 +152,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CarterProd.edmx</DependentUpon>
       <LastGenOutput>CarterProd.cs</LastGenOutput>
+    </Content>
+    <Content Include="DnAHistory.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DnAHistory.edmx</DependentUpon>
+      <LastGenOutput>DnAHistory.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DnAHistory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DnAHistory.edmx</DependentUpon>
+      <LastGenOutput>DnAHistory.cs</LastGenOutput>
     </Content>
     <Content Include="TMW_Live.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

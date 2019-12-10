@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DnAHistory.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TMW_Live.dbo.carter_DnAHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="carter_DnAHistory">
+          <Key>
+            <PropertyRef Name="EmployID" />
+            <PropertyRef Name="Report_DateTime" />
+          </Key>
+          <Property Name="EmployID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="25" />
+          <Property Name="frstname" Type="varchar" MaxLength="25" />
+          <Property Name="midlname" Type="varchar" MaxLength="25" />
+          <Property Name="emplclas" Type="varchar" MaxLength="25" />
+          <Property Name="db" Type="varchar" MaxLength="25" />
+          <Property Name="testsel" Type="varchar" MaxLength="5" />
+          <Property Name="Report_DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="up_Insert_carter_dnaHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployID" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="firstname" Type="varchar" Mode="In" />
+          <Parameter Name="midlname" Type="varchar" Mode="In" />
+          <Parameter Name="emplclas" Type="varchar" Mode="In" />
+          <Parameter Name="db" Type="varchar" Mode="In" />
+          <Parameter Name="testsel" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DnAHistoryStoreContainer">
+          <EntitySet Name="carter_DnAHistory" EntityType="Self.carter_DnAHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [carter_DnAHistory].[EmployID] AS [EmployID], 
+    [carter_DnAHistory].[lastname] AS [lastname], 
+    [carter_DnAHistory].[frstname] AS [frstname], 
+    [carter_DnAHistory].[midlname] AS [midlname], 
+    [carter_DnAHistory].[emplclas] AS [emplclas], 
+    [carter_DnAHistory].[db] AS [db], 
+    [carter_DnAHistory].[testsel] AS [testsel], 
+    [carter_DnAHistory].[Report_DateTime] AS [Report_DateTime]
+    FROM [dbo].[carter_DnAHistory] AS [carter_DnAHistory]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DnAHistory" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="carter_DnAHistory">
+          <Key>
+            <PropertyRef Name="EmployID" />
+            <PropertyRef Name="Report_DateTime" />
+          </Key>
+          <Property Name="EmployID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="frstname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="midlname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="emplclas" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="db" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="testsel" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Report_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="TMW_LiveEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="carter_DnAHistory" EntityType="Self.carter_DnAHistory" />
+          <FunctionImport Name="up_Insert_carter_dnaHistory">
+            <Parameter Name="EmployID" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="firstname" Mode="In" Type="String" />
+            <Parameter Name="midlname" Mode="In" Type="String" />
+            <Parameter Name="emplclas" Mode="In" Type="String" />
+            <Parameter Name="db" Mode="In" Type="String" />
+            <Parameter Name="testsel" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DnAHistoryStoreContainer" CdmEntityContainer="TMW_LiveEntities2">
+          <EntitySetMapping Name="carter_DnAHistory">
+            <EntityTypeMapping TypeName="DnAHistory.carter_DnAHistory">
+              <MappingFragment StoreEntitySet="carter_DnAHistory">
+                <ScalarProperty Name="EmployID" ColumnName="EmployID" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="frstname" ColumnName="frstname" />
+                <ScalarProperty Name="midlname" ColumnName="midlname" />
+                <ScalarProperty Name="emplclas" ColumnName="emplclas" />
+                <ScalarProperty Name="db" ColumnName="db" />
+                <ScalarProperty Name="testsel" ColumnName="testsel" />
+                <ScalarProperty Name="Report_DateTime" ColumnName="Report_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="DnAHistory.carter_DnAHistory">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DnAHistory.Store.up_Insert_carter_dnaHistory">
+                  <ScalarProperty Name="frstname" ParameterName="firstname" />
+                  <ScalarProperty Name="testsel" ParameterName="testsel" />
+                  <ScalarProperty Name="db" ParameterName="db" />
+                  <ScalarProperty Name="emplclas" ParameterName="emplclas" />
+                  <ScalarProperty Name="midlname" ParameterName="midlname" />
+                  <ScalarProperty Name="lastname" ParameterName="lastname" />
+                  <ScalarProperty Name="EmployID" ParameterName="EmployID" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="up_Insert_carter_dnaHistory" FunctionName="DnAHistory.Store.up_Insert_carter_dnaHistory" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

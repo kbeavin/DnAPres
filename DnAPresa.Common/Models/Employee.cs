@@ -18,4 +18,27 @@ namespace DnAPresa.Common.Models
         public int DrugPool { get; set; }
         public int AlcPool { get; set; }
     }
+
+    public class EmployeeHistory
+    {
+        public string EmployID { get; set; }
+        public string lastname { get; set; }
+        public string frstname { get; set; }
+        public string midlname { get; set; }
+        public string emplclas { get; set; }
+        public string db { get; set; }
+        public string testsel { get; set; }
+        public DateTime Report_DateTime { get; set; }
+    }
+
+    public class EmployeeList
+    {
+        public EmployeeList()
+        {
+            Employees = new List<EmployeeHistory>();
+        }
+
+        public List<EmployeeHistory> Employees { get; set; }
+        public int Count { get { return Employees.Count(); } }
+    }
 }

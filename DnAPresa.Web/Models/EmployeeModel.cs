@@ -18,6 +18,20 @@ namespace DnAPresa.Web.Models
         public bool Substitute { get; set; }
         public int DrugPool { get; set; }
         public int AlcPool { get; set; }
+
+        public string Get_TestSelection(bool drug, bool alc, bool sub)
+        {
+            StringBuilder testsel = new StringBuilder();
+
+            if (drug == true)
+                testsel.Append("D");
+            if (alc == true)
+                testsel.Append("nA");
+            if (sub == true)
+                testsel.Append("S");
+
+            return testsel.ToString();
+        }
     }
 
     public class EmployeeListModel

@@ -17,6 +17,8 @@
 
                     <th>Name</th>
 
+                    <th>Terminal</th>
+
                     <th>Drug</th>
 
                     <th>Alchohol</th>
@@ -36,6 +38,8 @@
                         <td>@emp.EmployeeNumber</td>
 
                         <td>@emp.EmployeeFullName</td>
+
+                        <td>@(emp.Terminal != null ? emp.Terminal : emp.Tier3)</td>
 
                         <td>@emp.Drug</td>
 

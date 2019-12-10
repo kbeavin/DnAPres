@@ -15,6 +15,7 @@ namespace DnAPresa.Common.Models
         }
 
         public int Code { get; set; }
+        public bool Success { get; set; }
         public string Message { get; set; }
         public List<Employee> Data { get; set; }
 

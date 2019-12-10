@@ -1,0 +1,19 @@
+﻿.indicator-container {
+    position: absolute;
+    top: 0;
+    right: 15rem;
+    width: 5%;
+    display: none;
+    z-index: 1031;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: #03b503;
+    height: 30px;
+
+    & .indicator-text {
+        color: white;
+        font-weight: 900;
+    }
+}

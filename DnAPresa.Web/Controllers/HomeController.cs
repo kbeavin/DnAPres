@@ -83,6 +83,40 @@ namespace DnAPresa.Web.Controllers
 
         #endregion
 
+        #region Post Methods
+
+        public ActionResult Insert_DnAHistory(EmployeeListModel model)
+        {
+            Common.Models.EmployeeList mData = new Common.Models.EmployeeList();
+            try
+            {
+                // Convert to Data Model
+                foreach (var emp in model.Employees)
+                {
+                    mData.Employees.Add(new Common.Models.EmployeeHistory
+                    {
+                        EmployID = emp.EmployeeNumber,
+                        lastname = emp.EmployeeFullName,
+                        frstname = emp.EmployeeFullName,
+                        emplclas = emp.Terminal,
+                        testsel = emp.Get_TestSelection(emp.Drug, emp.Alcohol, emp.Substitute),
+                        Report_DateTime = DateTime.UtcNow
+                    });
+                }
+
+                // Post the list of employees into history table
+                var mResponse = EmployeeProcessor.Insert_DnAHistory(mData);
+
+                return Json(new { mResponse.Success });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { ex.Message });
+            }
+        }
+
+        #endregion
+
         #region Helpers
 
         private string ConvertViewToString(string viewName, object model)

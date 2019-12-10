@@ -321,6 +321,7 @@
     <Content Include="Content\packages\DataTables\css\mixins.scss" />
     <Content Include="Content\packages\DataTables\css\common.scss" />
     <Content Include="Content\sass\components\_printpreview.scss" />
+    <Content Include="Content\sass\components\_indicator.scss" />
     <None Include="Content\Scripts\jquery\jquery-3.3.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery\jquery-3.3.1.js" />
     <Content Include="Content\Scripts\jquery\jquery-3.3.1.min.js" />

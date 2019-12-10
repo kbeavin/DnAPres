@@ -12,11 +12,13 @@
     <script src="~/Content/Scripts/modernizr/modernizr-2.8.3.js"></script>
 </head>
 <body>
-
     <div class="container">
         @Html.Partial("_Layout_navbar")
         @RenderBody()
+    </div>
 
+    <div class="indicator-container">
+        <span class="indicator-text">Saved</span>
     </div>
 
     <script src="~/Content/Scripts/jquery/jquery-3.3.1.min.js"></script>
