@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button id="SaveHistoryBtn" type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard changes</button>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
                 printContent();
             });
 
-            $("#SaveHistoryBtn").on("click", function () {
+            $("body").on("click", "#SaveHistoryBtn", function () {
                 saveContent();
             });
         });
@@ -107,19 +107,20 @@
                 paging: false,
                 columns: [
                     { data: "number" },
-                    { data: "name" },
+                    { data: "firstname" },
+                    { data: "lastname" },
                     { data: "terminal" },
                     { data: "drug" },
                     { data: "alc" },
                     { data: "sub" }
                 ],
-                order: [[2, 'desc'], [3, 'asc'], [0, 'asc']],
+                order: [[4, 'desc'], [5, 'asc'], [0, 'asc']],
                 drawCallback: function (settings) { // This got out of hand fast KB
                     var api = this.api();
                     var rows = api.rows({ page: 'current' }).nodes();
                     var last = null;
                     var counter = 0;
-                    api.column(2, { page: 'current' }).data().each(function (group, i) {
+                    api.column(4, { page: 'current' }).data().each(function (group, i) {
                         if (counter == 0) {
                             if (last !== group) {
 
@@ -133,7 +134,7 @@
                         }
                     });
                     counter = 0;
-                    api.column(3, { page: 'current' }).data().each(function (group, i) {
+                    api.column(5, { page: 'current' }).data().each(function (group, i) {
                         if (counter == 0) {
                             if (last !== group) {
                                 if (group === "True") {
@@ -148,7 +149,7 @@
                         }
                     });
                     counter = 0;
-                    api.column(4, { page: 'current' }).data().each(function (group, i) {
+                    api.column(6, { page: 'current' }).data().each(function (group, i) {
                         if (counter == 0) {
                             if (last !== group) {
                                 if (group === "True") {
@@ -177,10 +178,10 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    debugger;
+                    
                     $("#SaveHistory").modal("hide");
                     if (response.Success == true) {
-                        $(".indicator-container").fadeIn("slow");
+                        $(".indicator-container").fadeIn("slow"); // TODO: create a real Indicator or Toast in app.js
                         $('.indicator-container').delay(5000).fadeOut('slow');
                     } else {
                         $(".indicator-text").text("Failed");
@@ -202,14 +203,15 @@
             $("table tr").each(function (i, tr) {
                 var employee = {
                     EmployeeNumber: $(tr).find("td:eq(0)").text(),
-                    EmployeeFullName: $(tr).find("td:eq(1)").text(),
-                    Terminal: $(tr).find("td:eq(2)").text(),
-                    Drug: $(tr).find("td:eq(3)").text(),
-                    Alchohol: $(tr).find("td:eq(4)").text(),
-                    Substitute: $(tr).find("td:eq(5)").text()
+                    FirstName: $(tr).find("td:eq(1)").text(),
+                    LastName: $(tr).find("td:eq(2)").text(),
+                    Terminal: $(tr).find("td:eq(3)").text(),
+                    Drug: $(tr).find("td:eq(4)").text(),
+                    Alchohol: $(tr).find("td:eq(5)").text(),
+                    Substitute: $(tr).find("td:eq(6)").text()
                 }
 
-                if (employee.EmployeeFullName !== "") {
+                if (employee.LastName !== "") {
                     mData.Employees.push(employee);
                 }
             });

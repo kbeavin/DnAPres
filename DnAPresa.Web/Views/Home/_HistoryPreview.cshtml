@@ -1,0 +1,73 @@
+﻿@model DnAPresa.Web.Models.EmployeeHistoryListModel
+
+<div id="print-div" class="">
+
+    <h2 id="print-head">Random Drug & Alchohol History Report</h2>
+    <p>@System.DateTime.Now</p>
+
+    <div class="row">
+
+        <table id="dataTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Employee ID</th>
+
+                    <th>Last Name</th>
+
+                    <th>First Name</th>
+
+                    <th>Terminal</th>
+
+                    <th>Test Selection</th>
+
+                    <th>Reported On</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var emp in Model.Employees)
+                {
+                    <tr>
+
+                        <td>@emp.EmployID</td>
+
+                        <td>@emp.lastname</td>
+
+                        <td>@emp.frstname</td>
+
+                        <td>@emp.emplclas</td>
+
+                        <td>@emp.testsel</td>
+
+                        <td>@emp.Report_DateTime</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function printContent() {
+
+        var restorePage = document.body.innerHTML;
+        var printContent = document.getElementById("print-div").innerHTML;
+
+        document.body.innerHTML = printContent;
+        window.print();
+        document.body.innerHTML = restorePage;
+    }
+
+</script>

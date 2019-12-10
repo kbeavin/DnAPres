@@ -1,4 +1,9 @@
-﻿<div class="row filter-container">
+﻿@{ 
+    var endDate = DateTime.Now;
+    var startDate = endDate.AddYears(-1);
+}
+
+<div class="row filter-container">
 
     <div class="col-sm-6">
 
@@ -6,29 +11,15 @@
 
             <div class="col-sm-4">
 
-                <span>Employee Class:</span>
+                <span>Start Date:</span>
 
             </div>
 
             <div class="col-sm-6">
 
-                @Html.DropDownList("EmpClassList", new SelectList(ViewBag.EmpClassList, "Key", "Value"), new { @id = "EmpClassList", @class = "form-control" })
-
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-4">
-
-                <span>Employee Terminal:</span>
-
-            </div>
-
-            <div class="col-sm-6">
-
-                @Html.DropDownList("EmpTerminalList", new SelectList(ViewBag.EmpTerminalList, "Key", "Value"), "-- Select --", new { @id = "EmpTerminalList", @class = "form-control", @disabled = "false" })
+                <div>
+                    <input id="StartDate" type="text" class="form-control" data-toggle="datepicker" value="@(startDate.ToShortDateString())" >
+                </div>
 
             </div>
 
@@ -42,29 +33,15 @@
 
             <div class="col-sm-4">
 
-                <span>Drug Pool:</span>
+                <span>End Date:</span>
 
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-6">
 
-                @Html.TextBox("DrugPool", 10, new { @class = "form-control" })
-
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-4">
-
-                <span>Alchohol Pool:</span>
-
-            </div>
-
-            <div class="col-sm-3">
-
-                @Html.TextBox("AlcPool", 10, new { @class = "form-control" })
+                <div>
+                    <input id="EndDate" type="text" class="form-control" data-toggle="datepicker" value="@(endDate.ToShortDateString())" >
+                </div>
 
             </div>
 
@@ -76,21 +53,24 @@
 
 <script type="text/javascript">
 
+    var startDate = new Date(2014, 1, 14);
+
     $(function () {
-        // Bind Event for DropDowns
-        $("body").on("change", "#EmpClassList, #EmpTerminalList", function () {
+        Get_FilteredHistory();
+
+        // Bind DatePickers to control https://github.com/fengyuanchen/datepicker
+        $("#StartDate[data-toggle='datepicker']").datepicker();
+        $("#EndDate[data-toggle='datepicker']").datepicker();
+
+        $("body").on("change", "#StartDate, #EndDate", function () {
             Get_FilteredHistory();
         });
 
-        // Bind Event for TextBoxes
-        $("body").on("keyup", "#DrugPool, #DrugPoolPercent, #AlcPool, #AlcPoolPercent", delay(function (e) {
-            Get_FilteredHistory();
-        }, 500));
     });
 
     function Get_FilteredHistory() {
         var mData = Get_FilterValues();
-        
+
         $.ajax({
             type: 'POST',
             url: '/Home/Get_FilteredHistory',
@@ -107,10 +87,8 @@
     function Get_FilterValues() {
         var mData = {
             model: {
-                Tier3: $("#EmpClassList option:selected").text(),
-                Terminal: $("#EmpTerminalList option:selected").text(),
-                DrugPool: $("#DrugPool").val(),
-                AlcPool: $("#AlcPool").val()
+                StartDate: $("#StartDate").val(),
+                EndDate: $("#EndDate").val(),
             }
         }
         return mData;

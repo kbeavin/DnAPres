@@ -301,6 +301,12 @@
     <Content Include="Content\packages\DataTables\images\sort_desc.png" />
     <Content Include="Content\packages\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\packages\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\packages\datepicker\datepicker.common.js" />
+    <Content Include="Content\packages\datepicker\datepicker.css" />
+    <Content Include="Content\packages\datepicker\datepicker.esm.js" />
+    <Content Include="Content\packages\datepicker\datepicker.js" />
+    <Content Include="Content\packages\datepicker\datepicker.min.css" />
+    <Content Include="Content\packages\datepicker\datepicker.min.js" />
     <Content Include="Content\Scripts\global\app.js" />
     <Content Include="Content\Scripts\global\global.js" />
     <Content Include="favicon.ico" />
@@ -422,10 +428,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout_navbar.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Filter.cshtml" />
-    <Content Include="Views\Shared\_PrintPreview.cshtml" />
+    <Content Include="Views\Home\_Filter.cshtml" />
+    <Content Include="Views\Home\_PrintPreview.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
     <Content Include="Views\Home\_HIstoryFilter.cshtml" />
+    <Content Include="Views\Home\_HistoryPreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

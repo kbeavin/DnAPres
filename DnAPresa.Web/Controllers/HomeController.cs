@@ -4,6 +4,7 @@ using DnAPresa.Web.Models;
 using DnAPresa.Common.Utilities;
 using DnAPresa.Data.Processors;
 using System.IO;
+using DnAPresa.Common.Models;
 
 namespace DnAPresa.Web.Controllers
 {
@@ -62,7 +63,8 @@ namespace DnAPresa.Web.Controllers
                     viewModel.Employees.Add(new EmployeeModel
                     {
                         EmployeeNumber = emp.EmployeeNumber,
-                        EmployeeFullName = emp.EmployeeFullName,
+                        LastName = emp.LastName,
+                        FirstName = emp.FirstName,
                         Tier3 = emp.Tier3,
                         Terminal = emp.Terminal,
                         Drug = emp.Drug,
@@ -73,7 +75,7 @@ namespace DnAPresa.Web.Controllers
 
                 // Convert partial view to return as Json
                 string viewContent = ConvertViewToString("_PrintPreview", viewModel);
-                return Json(new { PartialView = viewContent });
+                return Json(new { PartialView = viewContent }); // TODO: do not return here return updated dto json
             }
             catch (Exception ex)
             {
@@ -83,6 +85,7 @@ namespace DnAPresa.Web.Controllers
 
         public ActionResult Insert_DnAHistory(EmployeeListModel model)
         {
+            JsonResult json = new JsonResult { Data = false};
             Common.Models.EmployeeList mData = new Common.Models.EmployeeList();
             try
             {
@@ -92,23 +95,25 @@ namespace DnAPresa.Web.Controllers
                     mData.Employees.Add(new Common.Models.EmployeeHistory
                     {
                         EmployID = emp.EmployeeNumber,
-                        lastname = emp.EmployeeFullName,
-                        frstname = emp.EmployeeFullName,
+                        lastname = emp.LastName,
+                        frstname = emp.FirstName,
                         emplclas = emp.Terminal,
                         testsel = emp.Get_TestSelection(emp.Drug, emp.Alcohol, emp.Substitute),
-                        Report_DateTime = DateTime.UtcNow
+                        Report_DateTime = DateTime.Now
                     });
                 }
 
                 // Post the list of employees into history table
                 var mResponse = EmployeeProcessor.Insert_DnAHistory(mData);
 
-                return Json(new { mResponse.Success });
+                json.Data = mResponse.Success;
             }
             catch (Exception ex)
             {
                 return Json(new { ex.Message });
             }
+
+            return json;
         }
 
         #endregion
@@ -141,30 +146,43 @@ namespace DnAPresa.Web.Controllers
             return Json(new { PartialView = viewContent });
         }
 
-        public ActionResult Get_FilteredHistory(EmployeeModel model)
+        public ActionResult Get_FilteredHistory(EmployeeHistoryModel model)
         {
-            EmployeeListModel viewModel = new EmployeeListModel();
+            EmployeeHistoryListModel viewModel = new EmployeeHistoryListModel();
 
             try
             {
                 // Convert to Data Model
-                Common.Models.Employee mData = new Common.Models.Employee
+                Common.Models.EmployeeHistory mData = new Common.Models.EmployeeHistory
                 {
-                    Tier3 = model.Tier3,
-                    Terminal = model.Terminal,
-                    DrugPool = model.DrugPool,
-                    AlcPool = model.AlcPool
+                    EmployID = model.EmployID,
+                    lastname = model.lastname,
+                    frstname = model.frstname,
+                    midlname = model.midlname,
+                    emplclas = model.emplclas,
+                    db = model.db,
+                    testsel = model.testsel,
+                    Report_DateTime = model.Report_DateTime,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate
                 };
 
-                // Go get our filtered list of employees
+                // Go get our filtered list of history
                 var mResponse = EmployeeProcessor.Get_FilteredHistory(mData);
 
                 // Assignment to view model
                 foreach (var emp in mResponse.Data)
                 {
-                    viewModel.Employees.Add(new EmployeeModel
+                    viewModel.Employees.Add(new EmployeeHistoryModel
                     {
-                    
+                        EmployID = emp.EmployID,
+                        lastname = emp.lastname,
+                        frstname = emp.frstname,
+                        midlname = emp.midlname,
+                        emplclas = emp.emplclas,
+                        db = emp.db,
+                        testsel = emp.testsel,
+                        Report_DateTime = emp.Report_DateTime
                     });
                 }
 

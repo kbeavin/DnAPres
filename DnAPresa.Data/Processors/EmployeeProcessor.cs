@@ -50,7 +50,7 @@ namespace DnAPresa.Data.Processors
             return dto;
         }
 
-        public static DTO<EmployeeHistory> Get_FilteredHistory(Employee model)
+        public static DTO<EmployeeHistory> Get_FilteredHistory(EmployeeHistory model)
         {
             DTO<EmployeeHistory> dto = new DTO<EmployeeHistory>();
 
@@ -71,6 +71,16 @@ namespace DnAPresa.Data.Processors
                                     h.Report_DateTime
                                 };
 
+                    #region Filter Query
+
+                    // Filter Query by StartDate
+                    query = string.IsNullOrEmpty(model.StartDate.ToString()) ? query : query.Where(h => h.Report_DateTime >= model.StartDate);
+
+                    // Filter Query by EndDate
+                    query = string.IsNullOrEmpty(model.EndDate.ToString()) ? query : query.Where(h => h.Report_DateTime <= model.EndDate);
+
+                    #endregion
+
                     // Create List of EmployeeHistory's
                     foreach (var emp in query)
                     {
@@ -78,10 +88,17 @@ namespace DnAPresa.Data.Processors
                         {
                             EmployID = emp.EmployID,
                             lastname = emp.lastname,
+                            frstname = emp.frstname,
+                            midlname = emp.midlname,
+                            emplclas = emp.emplclas,
+                            db = emp.db,
+                            testsel = emp.testsel,
+                            Report_DateTime = emp.Report_DateTime
                         });
                     }
                 }
 
+                dto.Data.OrderBy(x => x.Report_DateTime);
                 dto.Success = true;
             }
             catch (Exception ex)
@@ -111,7 +128,8 @@ namespace DnAPresa.Data.Processors
                                 select new
                                 {
                                     ce.EmployeeNumber,
-                                    ce.EmployeeFullName,
+                                    ce.EmployeeLastName,
+                                    ce.EmployeeFirstName,
                                     ce.Tier3
                                 };
 
@@ -126,7 +144,8 @@ namespace DnAPresa.Data.Processors
                             dto.Data.Add(new Employee
                             {
                                 EmployeeNumber = emp.EmployeeNumber,
-                                EmployeeFullName = emp.EmployeeFullName,
+                                LastName = emp.EmployeeLastName,
+                                FirstName = emp.EmployeeFirstName,
                                 Tier3 = emp.Tier3,
                                 Terminal = "AND"
                             });
@@ -182,6 +201,8 @@ namespace DnAPresa.Data.Processors
                             {
                                 EmployeeNumber = emp.mpp_id,
                                 EmployeeFullName = emp.mpp_firstname + " " + emp.mpp_lastname,
+                                FirstName = emp.mpp_firstname,
+                                LastName = emp.mpp_lastname,
                                 Tier3 = "Drivers",
                                 Terminal = emp.mpp_terminal
                             });

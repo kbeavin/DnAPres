@@ -11,6 +11,8 @@ namespace DnAPresa.Web.Models
     {
         public string EmployeeNumber { get; set; }
         public string EmployeeFullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Tier3 { get; set; }
         public string Terminal { get; set; }
         public bool Drug { get; set; }
@@ -34,6 +36,20 @@ namespace DnAPresa.Web.Models
         }
     }
 
+    public class EmployeeHistoryModel
+    {
+        public string EmployID { get; set; }
+        public string lastname { get; set; }
+        public string frstname { get; set; }
+        public string midlname { get; set; }
+        public string emplclas { get; set; }
+        public string db { get; set; }
+        public string testsel { get; set; }
+        public DateTime Report_DateTime { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
+
     public class EmployeeListModel
     {
         public EmployeeListModel()
@@ -42,6 +58,17 @@ namespace DnAPresa.Web.Models
         }
 
         public List<EmployeeModel> Employees { get; set; }
+        public int Count { get { return Employees.Count(); } }
+    }
+
+    public class EmployeeHistoryListModel
+    {
+        public EmployeeHistoryListModel()
+        {
+            Employees = new List<EmployeeHistoryModel>();
+        }
+
+        public List<EmployeeHistoryModel> Employees { get; set; }
         public int Count { get { return Employees.Count(); } }
     }
 }

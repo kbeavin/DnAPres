@@ -69,7 +69,9 @@
 
         function InitDataTable() {
             $("#dataTable").DataTable({
-                responsive: true
+                responsive: true,
+                order: [[5, 'asc']],
+                pageLength: 50
             });
         }
 

@@ -10,6 +10,8 @@ namespace DnAPresa.Common.Models
     {
         public string EmployeeNumber { get; set; }
         public string EmployeeFullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Tier3 { get; set; }
         public string Terminal { get; set; }
         public bool Drug { get; set; }
@@ -29,6 +31,8 @@ namespace DnAPresa.Common.Models
         public string db { get; set; }
         public string testsel { get; set; }
         public DateTime Report_DateTime { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 
     public class EmployeeList
