@@ -233,40 +233,44 @@ namespace DnAPresa.Data.Processors
         {
             DTO<EmployeeList> dto = new DTO<EmployeeList>();
 
-            try
+            if (model.Employees != null && model.Employees.Any())
             {
-                // Open connection to DB         // had to do it this way because table does not have PK
-                using (SqlConnection conn = new SqlConnection("data source=NAUS03TMW1;initial catalog=TMW_Live;integrated security=True;multipleactiveresultsets=True"))
+                try
                 {
-                    // Get SPROC
-                    SqlCommand cmd = new SqlCommand("up_Insert_carter_dnaHistory", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Loop over list and add to DB
-                    foreach (var emp in model.Employees)
+                    // Open connection to DB         // had to do it this way because table does not have PK
+                    using (SqlConnection conn = new SqlConnection("data source=NAUS03TMW1;initial catalog=TMW_Live;integrated security=True;multipleactiveresultsets=True"))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@EmployID", emp.EmployID));
-                        cmd.Parameters.Add(new SqlParameter("@lastname", emp.lastname));
-                        cmd.Parameters.Add(new SqlParameter("@firstname", emp.frstname));
-                        cmd.Parameters.Add(new SqlParameter("@midlname", string.Empty));
-                        cmd.Parameters.Add(new SqlParameter("@emplclas", emp.emplclas));
-                        cmd.Parameters.Add(new SqlParameter("@db", "CEXPL"));
-                        cmd.Parameters.Add(new SqlParameter("@testsel", emp.testsel));
+                        conn.Open();
+                        // Get SPROC
+                        SqlCommand cmd = new SqlCommand("up_Insert_carter_dnaHistory", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                        using (SqlDataReader rdr = cmd.ExecuteReader()) { }
+                        // Loop over list and add to DB
+                        foreach (var emp in model.Employees)
+                        {
+                            cmd.Parameters.Add(new SqlParameter("@EmployID", emp.EmployID));
+                            cmd.Parameters.Add(new SqlParameter("@lastname", emp.lastname));
+                            cmd.Parameters.Add(new SqlParameter("@firstname", emp.frstname));
+                            cmd.Parameters.Add(new SqlParameter("@midlname", string.Empty));
+                            cmd.Parameters.Add(new SqlParameter("@emplclas", emp.emplclas));
+                            cmd.Parameters.Add(new SqlParameter("@db", "CEXPL"));
+                            cmd.Parameters.Add(new SqlParameter("@testsel", emp.testsel));
 
-                        cmd.Parameters.Clear();
+                            using (SqlDataReader rdr = cmd.ExecuteReader()) { }
+
+                            cmd.Parameters.Clear();
+                        }
+                        conn.Close();
                     }
+
+                    // Set Data Transfer Object Success property to true
+                    dto.Success = true;
                 }
-
-                // Set Data Transfer Object Success property to true
-                dto.Success = true;
+                catch (Exception ex)
+                {
+                    dto.Message = "Failed to save pull. Error: " + ex.Message;
+                }
             }
-            catch (Exception ex)
-            {
-                dto.Message = "Failed to save pull. Error: " + ex.Message;
-            }
-
             return dto;
         }
 

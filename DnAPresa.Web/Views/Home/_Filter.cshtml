@@ -101,6 +101,10 @@
             success: function (response) {
                 $(".print-preview").html(response.PartialView).fadeIn("slow");
                 InitDataTable();
+                if (response.Success == true) {
+                    printContentBool = true;
+                    $("#print-button").removeClass("disabled");
+                }
             }
         });
     }
@@ -119,7 +123,7 @@
 
     function EvaulateDropDownLists() {
         var empClass = $("#EmpClassList option:selected").text();
-        
+
         if (empClass === "Drivers") {
             // Enable
             $("#EmpTerminalList").attr("disabled", false);

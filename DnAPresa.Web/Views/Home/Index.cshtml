@@ -10,7 +10,7 @@
 
                 <h1>DnA Presa</h1>
 
-                <span id="print-button" class="print-button">Print</span>
+                <span id="print-button" class="print-button disabled">Print</span>
 
                 <span id="filter-toggle" class="filter-toggle">Filter</span>
 
@@ -61,6 +61,7 @@
 @section Scripts
 {
     <script type="text/javascript">
+        var printContentBool = false;
 
         $(function () {
             Get_Filter();
@@ -75,7 +76,9 @@
             }, 800);
 
             $("body").on("click", ".print-button", function () {
-                $("#SaveHistory").modal("show");
+                if (printContentBool == true) {
+                    $("#SaveHistory").modal("show");
+                }
             });
 
             $("#SaveHistory").on("hidden.bs.modal", function () {
@@ -170,7 +173,7 @@
 
         function saveContent() {
             var mData = Get_SaveContentValues();
-            
+
             $.ajax({
                 type: 'POST',
                 url: '/Home/Insert_DnAHistory',
@@ -178,18 +181,19 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    
+
                     $("#SaveHistory").modal("hide");
-                    if (response.Success == true) {
-                        $(".indicator-container").fadeIn("slow"); // TODO: create a real Indicator or Toast in app.js
+                    if (response == true) { // TODO: create a real Indicator or Toast in app.js
+                        $(".indicator-text").text("Saved");
+                        $(".indicator-container").css("background-color", "#03b503")
+                        $(".indicator-container").fadeIn("slow");
                         $('.indicator-container').delay(5000).fadeOut('slow');
                     } else {
                         $(".indicator-text").text("Failed");
-                        $(".indicator-container").css("background-color: red;")
+                        $(".indicator-container").css("background-color", "red")
                         $(".indicator-container").fadeIn("slow");
                         $('.indicator-container').delay(5000).fadeOut('slow');
-                        $(".indicator-text").text("Saved");
-                        $(".indicator-container").css("background-color: #03b503;")
+
                     }
                 }
             });
@@ -199,7 +203,7 @@
             var mData = {
                 Employees: []
             }
-            
+
             $("table tr").each(function (i, tr) {
                 var employee = {
                     EmployeeNumber: $(tr).find("td:eq(0)").text(),

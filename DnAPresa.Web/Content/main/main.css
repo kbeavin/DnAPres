@@ -32,6 +32,9 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   background-color: #4f4e4e;
   cursor: pointer; }
+  .print-button.disabled {
+    background-color: #343434;
+    color: darkgray; }
 
 .row {
   margin-right: 0;

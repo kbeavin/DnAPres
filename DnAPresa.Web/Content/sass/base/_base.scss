@@ -39,4 +39,10 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     background-color: #4f4e4e;
     cursor: pointer;
+
+    &.disabled {
+        background-color: #343434;
+        color: darkgray;
+    }
 }
+

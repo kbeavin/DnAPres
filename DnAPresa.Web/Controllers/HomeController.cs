@@ -75,7 +75,7 @@ namespace DnAPresa.Web.Controllers
 
                 // Convert partial view to return as Json
                 string viewContent = ConvertViewToString("_PrintPreview", viewModel);
-                return Json(new { PartialView = viewContent }); // TODO: do not return here return updated dto json
+                return Json(new { PartialView = viewContent, Success = true }); // TODO: do not return here return updated dto json
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace DnAPresa.Web.Controllers
 
         public ActionResult Insert_DnAHistory(EmployeeListModel model)
         {
-            JsonResult json = new JsonResult { Data = false};
+            JsonResult json = new JsonResult { Data = false };
             Common.Models.EmployeeList mData = new Common.Models.EmployeeList();
             try
             {

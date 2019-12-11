@@ -71,7 +71,15 @@
             $("#dataTable").DataTable({
                 responsive: true,
                 order: [[5, 'asc']],
-                pageLength: 50
+                pageLength: 50,
+                columns: [
+                    { data: "id" },
+                    { data: "lname" },
+                    { data: "fname" },
+                    { data: "terminal" },
+                    { data: "testsel" },
+                    { data: "date", type: "date"}
+                ]
             });
         }
 
