@@ -7,4 +7,12 @@
         padding-right: 0;
         padding-left: 0;
     }
+
+    .form-control {
+
+        &:focus{
+            border-color: $carter-red;
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba($carter-red, 0.6);
+        }
+    }
 }

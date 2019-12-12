@@ -87,6 +87,10 @@
         $("body").on("keyup", "#DrugPool, #DrugPoolPercent, #AlcPool, #AlcPoolPercent", delay(function (e) {
             Get_FilteredEmployees();
         }, 500));
+
+        // Setup Select2's
+        //$("#EmpClassList").select2();
+        //$("#EmpTerminalList").select2();
     });
 
     function Get_FilteredEmployees() {

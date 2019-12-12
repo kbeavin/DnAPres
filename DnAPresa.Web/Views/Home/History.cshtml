@@ -10,9 +10,9 @@
 
                 <h1>DnA History</h1>
 
-                <span id="print-button" class="print-button">Print</span>
+                <span id="print-button" class="button">Print</span>
 
-                <span id="filter-toggle" class="filter-toggle">Filter</span>
+                <span id="filter-toggle" class="button">Filter</span>
 
             </header>
 
@@ -46,11 +46,11 @@
             Get_HistoryFilter();
             InitDataTable();
 
-            $("body").on("click", ".filter-toggle", function () {
+            $("body").on("click", "#filter-toggle", function () {
                 $(".filter-container").slideToggle();
             });
 
-            $("body").on("click", ".print-button", function () {
+            $("body").on("click", "#print-button", function () {
                 printContent();
             });
         });

@@ -10,9 +10,9 @@
 
                 <h1>DnA Presa</h1>
 
-                <span id="print-button" class="print-button disabled">Print</span>
+                <span id="print-button" class="button disabled">Print</span>
 
-                <span id="filter-toggle" class="filter-toggle">Filter</span>
+                <span id="filter-toggle" class="button">Filter</span>
 
             </header>
 
@@ -42,17 +42,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Save History</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h4 class="modal-title">Save History?</h4>
             </div>
             <div class="modal-body">
                 <p>Do you want to Record this pull for historical preservation?</p>
             </div>
             <div class="modal-footer">
-                <button id="SaveHistoryBtn" type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard changes</button>
+                <span class="button" data-dismiss="modal">Discard</span>
+                <span id="SaveHistoryBtn" class="button">Save</span>
             </div>
         </div>
     </div>
@@ -67,15 +64,15 @@
             Get_Filter();
             InitDataTable();
 
-            $("body").on("click", ".filter-toggle", function () {
+            $("body").on("click", "#filter-toggle", function () {
                 $(".filter-container").slideToggle();
             });
 
             setTimeout(function () {
-                $(".filter-toggle").trigger('click');
+                $("#filter-toggle").trigger('click');
             }, 800);
 
-            $("body").on("click", ".print-button", function () {
+            $("body").on("click", "#print-button", function () {
                 if (printContentBool == true) {
                     $("#SaveHistory").modal("show");
                 }
