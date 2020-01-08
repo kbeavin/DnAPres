@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnAPresa.Data", "DnAPresa.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnAPresa.Common", "DnAPresa.Common\DnAPresa.Common.csproj", "{EACA499C-1EA0-4B4F-96EE-78BCCACE124A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnAPresa.API", "DnAPresa.API\DnAPresa.API.csproj", "{ABAC9564-A4E8-44E7-98B7-56FF4A6C9085}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EACA499C-1EA0-4B4F-96EE-78BCCACE124A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EACA499C-1EA0-4B4F-96EE-78BCCACE124A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EACA499C-1EA0-4B4F-96EE-78BCCACE124A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAC9564-A4E8-44E7-98B7-56FF4A6C9085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAC9564-A4E8-44E7-98B7-56FF4A6C9085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAC9564-A4E8-44E7-98B7-56FF4A6C9085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAC9564-A4E8-44E7-98B7-56FF4A6C9085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
